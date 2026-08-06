@@ -7,6 +7,14 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+const config = {
+  gatsby: {
+    siteUrl: "https://www.coreylionis.com/",
+    gaTrackingId: null, 
+    trailingSlash: false,
+  },
+};
+
 module.exports = {
   siteMetadata: {
     title: `Under the World Tree`,
