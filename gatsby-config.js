@@ -15,7 +15,9 @@ module.exports = {
       summary: `Cool and awesome.`,
     },
     description: `What will become my website.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    // Possible issue: my siteurl for the build is either the github one or the custom domain
+    //at the latter there is no prefix.
+    pathPrefix: '/',
     social: {
     },
   },
