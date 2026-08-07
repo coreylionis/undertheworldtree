@@ -30,19 +30,21 @@ module.exports = {
     },
   },
   plugins: [
-    `gatsby-plugin-image`,
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        name:'blog',
+        path:`${__dirname}/src/pages/blog`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name:'images',
+        path:`${__dirname}/static/images`,
       },
     },
     {
@@ -50,24 +52,22 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 630,
-            },
-          },
-          {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
           `gatsby-remark-prismjs`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 630,
+            },
+          }
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
+{
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `
@@ -119,16 +119,22 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `Gatsby`,
+        name: `Corey Lionis Personal Site`,
+        short_name: `undertheworldtree`,
         start_url: `/`,
-        background_color: `#ffffff`,
+        background_color: `#663399`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `static/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
+    },
+    {
+    resolve: `gatsby-plugin-offline`,
+    options: {
+      precachePages: [`/about-us/`, `/projects/*`],
+    },
     },
   ],
 }

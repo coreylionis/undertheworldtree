@@ -2,7 +2,6 @@
   "name": "undertheworldtree",
   "private": true,
   "description": "Personal site of Corey Lionis.",
-  "version": "0.1.0",
   "author": "Corey Lionis <corey1057105@gmail.com>",
   "bugs": {
     "url": "https://github.com/coreylionis/undertheworldtree/issues"
@@ -10,23 +9,27 @@
   "dependencies": {
     "@fontsource/merriweather": "^5.0.8",
     "@fontsource-variable/montserrat": "^5.0.17",
-    "gatsby": "^5.14.6",
-    "gatsby-plugin-feed": "^5.14.0",
-    "gatsby-plugin-image": "^3.14.0",
-    "gatsby-plugin-manifest": "^5.14.0",
-    "gatsby-plugin-sharp": "^5.14.0",
-    "gatsby-remark-images": "^7.14.0",
-    "gatsby-remark-prismjs": "^7.14.0",
-    "gatsby-remark-responsive-iframe": "^6.14.0",
-    "gatsby-source-filesystem": "^5.14.0",
-    "gatsby-transformer-remark": "^6.14.0",
-    "gatsby-transformer-sharp": "^5.14.0",
+
+    "gatsby": "^5.16.1",
+    "gatsby-plugin-image": "^3.16.0",
+    "gatsby-plugin-sharp": "^5.16.0",
+    "gatsby-plugin-feed": "^5.16.0",
+    "gatsby-plugin-manifest": "^5.16.0",
+    "gatsby-plugin-offline": "^6.16.0",
+    "gatsby-remark-images": "^7.16.0",
+    "gatsby-remark-prismjs": "^7.16.0",
+    "gatsby-remark-responsive-iframe": "^6.16.0",
+    "gatsby-source-filesystem": "^5.16.0",
+    "gatsby-transformer-sharp": "^5.16.0",
+    "gatsby-transformer-remark": "^6.16.0",
+
+    "gh-pages": "^6.3.0",
     "prismjs": "^1.30.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "prettier": "^2.8.8"
+    "prettier": "^3.9.6"
   },
   "homepage": "https://github.com/coreylionis/undertheworldtree/",
   "keywords": [
@@ -41,7 +44,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "gatsby develop",
+    "start": "gatsby develop -o",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
