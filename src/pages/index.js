@@ -2,9 +2,9 @@ import * as React from "react"
 import Layout from "../components/layout"
 
 // creates IndexPage component
-const IndexPage = () => {
+const IndexPage = ({location}) => {
   return (
-    <Layout location={window.location} title="Home Page">
+    <Layout location={location} pageTitle="Home Page">
       <h2>This is the Index Page!</h2>
       <p>This is my first time writing html using React, 
         I hope it looks nice online. 

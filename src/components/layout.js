@@ -2,15 +2,15 @@ import * as React from "react"
 import { Link } from "gatsby"
 import * as baseStyles from "./layout.module.css"
 
-const Layout = ({location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/` 
-  const isRootPath = location.pathname === rootPath
+const Layout = ({location, pageTitle, children }) => {
+  const rootPath = `${__PATH_PREFIX__}/`
+  const isRootPath = location=== rootPath
   let header
 
   if (isRootPath) {
     header = (
       <h1 className="main-heading">
-        <Link to="/">{title}</Link>
+        <Link to="/">{pageTitle}</Link>
       </h1>
     )
   } else {
@@ -31,7 +31,7 @@ const Layout = ({location, title, children }) => {
         </ul>
       </nav>
       <main>
-        <h1 className={baseStyles.heading}>{title}</h1>
+        <h1 className={baseStyles.heading}>{pageTitle}</h1>
         {children}
       </main>
       <footer>
