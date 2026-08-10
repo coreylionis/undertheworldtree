@@ -36,7 +36,7 @@ const Bio = () => {
         className="bio-avatar"
         layout="fixed"
         formats={["auto", "jpg", "webp", "avif"]}
-        src="../../static/images/github-profile-picture.jpg"
+        src="../images/github-profile-picture.jpg"
         width={50}
         height={50}
         quality={95}

@@ -16,32 +16,19 @@ const Seo = ({ description, title, children }) => {
           siteMetadata {
             title
             description
-            social {
-              twitter
-            }
           }
         }
       }
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
 
   return (
+    //note to self: if you want to add metadata, import react-helmet-async and augment title.
+    //this is considered best-practice for header metadata with React.
     <>
       <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
-      <meta name="description" content={metaDescription} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={metaDescription} />
-      <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary" />
-      <meta
-        name="twitter:creator"
-        content={site.siteMetadata?.social?.twitter || ``}
-      />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={metaDescription} />
       {children}
     </>
   )

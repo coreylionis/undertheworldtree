@@ -4,6 +4,13 @@
     font-family: sans-serif;
 }
 
+.site-title {
+    font-size: 2rem;
+    color: grey;
+    font-weight: 700;
+    margin: 3rem 0;
+}
+
 .heading {
     font-family: DejaVu Sans Mono, monospace;
     color: rgb(92, 105, 251);

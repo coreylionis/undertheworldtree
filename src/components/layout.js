@@ -1,33 +1,33 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import * as baseStyles from "./layout.module.css"
 
 const Layout = ({location, pageTitle, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location=== rootPath
-  let header
-
-  if (isRootPath) {
-    header = (
-      <h1 className="main-heading">
-        <Link to="/">{pageTitle}</Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <Link className="header-link-home" to="/">
-        {'Home'}
-      </Link>
-    )
-  }
+  const data = useStaticQuery(graphql`
+    query{
+      site{
+        siteMetadata{
+          title
+          }
+            }
+              }
+  `)
 
   return (
     <div className={baseStyles.container} data-is-root-path={isRootPath}>
-      <header className="global-header">{header}</header>
+      <Link to= "/" style={{textDecoration: 'none'}}>
+      <header className={baseStyles.siteTitle}>{data.site.siteMetadata.title}</header>
+      </Link>
       <nav>
         <ul className={baseStyles.navLinks}>
           <li className={baseStyles.navLinkItem}><Link className={baseStyles.navLinkText} to="/">Home</Link></li>
           <li className={baseStyles.navLinkItem}><Link className={baseStyles.navLinkText} to="/about">About</Link></li>
+          <li className={baseStyles.navLinkItem}><Link className={baseStyles.navLinkText} to="/mathsblog">Maths Blog</Link></li>
+          <li className={baseStyles.navLinkItem}><Link className={baseStyles.navLinkText} to="/blog/hello-world">Tutorial: Hello World</Link></li>
+          <li className={baseStyles.navLinkItem}><Link className={baseStyles.navLinkText} to="/blog/my-second-post">Tutorial: Second Page</Link></li>
+          <li className={baseStyles.navLinkItem}><Link className={baseStyles.navLinkText} to="/blog/new-beginnings">Tutorial: New Beginnings</Link></li>
         </ul>
       </nav>
       <main>

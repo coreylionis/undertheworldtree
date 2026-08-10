@@ -20,13 +20,15 @@ module.exports = {
     title: `Under the World Tree`,
     author: {
       name: `Corey Lionis`,
-      summary: `Cool and awesome.`,
+      summary: `World-tree hollow denizen.`,
     },
-    description: `What will become my website.`,
+    description: `Personal site Corey Lionis.`,
     // Possible issue: my siteurl for the build is either the github one or the custom domain
     //at the latter there is no prefix.
     pathPrefix: '/',
     social: {
+      github: `coreylionis`,
+      linkedin: `corey-lionis-7a4440214`
     },
   },
   plugins: [
@@ -36,15 +38,29 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name:'blog',
-        path:`${__dirname}/src/pages/blog`,
+        name:'pages',
+        path:`${__dirname}/src/pages`,
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        name:'mathsblog',
+        path:`${__dirname}/src/pages/mathsblog`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name:'blog',
+        path:`${__dirname}/src/pages/blog`,
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         name:'images',
-        path:`${__dirname}/static/images`,
+        path:`${__dirname}/src/images`,
       },
     },
     {
