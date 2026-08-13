@@ -1,14 +1,20 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const MathsBlog = ({location, data}) => {
     return (
         <Layout location={location} pageTitle="Maths blog">
-            <ul>{data.allFile.nodes.map(node => (
-                <li key={node.name}>{node.name}</li>
-            ))}</ul>
+            {
+                data.allMdx.nodes.map((node) => (
+                    <article key={node.id}>
+                        <h2><Link to={node.frontmatter.slug}>{node.frontmatter.title}</Link></h2>
+                        <p>Posted: {node.frontmatter.date} | Updated: {node.parent.modifiedTime}</p>
+                        <p>{node.excerpt}</p>
+                    </article>
+                ))
+            }
         </Layout>
     )
 }
@@ -19,9 +25,19 @@ export default MathsBlog
 
 export const query = graphql`
     query {
-        allFile(filter: {relativePath: {glob: "mathsblog/*"}}){
+        allMdx(filter: {frontmatter: {tags: {eq: "blog"}}}, sort: { frontmatter: { date: DESC } }){
             nodes{
-                name
+                parent {
+                    ... on File {
+                        modifiedTime(formatString: "MMMM D, YYYY")
+                    }
+                }
+                frontmatter {
+                    date(formatString: "MMMM D, YYYY")
+                    title
+                }
+                id
+                excerpt
             }
         }
     }

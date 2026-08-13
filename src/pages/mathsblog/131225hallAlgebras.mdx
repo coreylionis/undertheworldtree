@@ -1,25 +1,10 @@
 ---
-layout: post
 title:  "Hall Algebras and Rational Points of Grassmannians"
 alttitle: "Hall Algebras"
-date:   2025-12-13 
-categories: jekyll update
-permalink: '/251213/' 
-tags: visible blog
+date:   2025-12-13  
+tags: blog
 author: Corey
+slug: "hallalgebras"
 ---
-<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/blogdefault.css">
-
-
 This week I attended AustMS, but I still had some time on the long tram trips to do a bit of study. I mostly spent this time learning what a Hall algebra is and studying the example of nilpotent representations for the Jordan quiver. Thus far, my best summary would be that the *Hall algebra* of a suitable abelian category is an associative algebra which contains information about the short exact sequence structure of the category. 
-
-Let $$\mathcal{A}$$ be an abelian category. To make the objects of $$\mathcal{A}$$ into an associative $$k$$-algebra tracking short exact sequences, one natural idea is to take the free $$k$$-vector space 
-$$\begin{displaymath}\mathbb{H}_{\mathcal{A}}  = \bigoplus_{M \in \text{Ob}(\mathcal{A})}kM\end{displaymath}$$
-with basis the objects of $$\mathcal{A}$$, and to define the product on basis elements by $$\begin{displaymath}
-M * N = \sum_{\substack{\text{objects } K \\\ \text{ fitting in exact sequences} \\\ 0 \to N \to K \to M \to 0}} a^K_{MN}K \quad
-\text{ for some constants } a^K_{MN} \in k. 
-\end{displaymath}$$
-We use the direct sum to ensure that calculating products and sums requires determining finitely many entries. Our goals for this definition are that: 
-
-- The choices of structure constants $$a^K_{MN}$$ make the multiplication associative
-- The structure constants record properties of the short exact sequences/extensions in $$\mathcal{A}$$. 
+ 
