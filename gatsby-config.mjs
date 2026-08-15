@@ -1,21 +1,15 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
- */
+import { createRequire } from "module"
+import { dirname } from "path"
+import { fileURLToPath } from "url"
+import siteUrl from "./defaults.mjs"
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const require = createRequire(import.meta.url)
 
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
 const config = {
-  gatsby: {
-    siteUrl: "https://www.coreylionis.com/",
-    gaTrackingId: null, 
-    trailingSlash: false,
-  },
-};
-
-module.exports = {
   siteMetadata: {
     title: `Under the World Tree`,
     author: {
@@ -23,8 +17,6 @@ module.exports = {
       summary: `World-tree hollow denizen.`,
     },
     description: `Personal site Corey Lionis.`,
-    // Possible issue: my siteurl for the build is either the github one or the custom domain
-    //at the latter there is no prefix.
     pathPrefix: '/',
     social: {
       github: `coreylionis`,
@@ -35,26 +27,18 @@ module.exports = {
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    { resolve: 'gatsby-plugin-mdx',
+    {
+      resolve: 'gatsby-source-filesystem',
       options: {
-        mdxOptions: {
-          remarkPlugins: [require('remark-math')],
-          rehypePlugins: [require('rehype-katex')],
-        }
-      }
+        name:'mathsblog',
+        path:`${__dirname}/src/pages/mathsblog`,
+      },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name:'pages',
         path:`${__dirname}/src/pages`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name:'mathsblog',
-        path:`${__dirname}/src/pages/mathsblog`,
       },
     },
     {
@@ -87,11 +71,24 @@ module.exports = {
             options: {
               maxWidth: 630,
             },
-          }
+          },
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              strict: `ignore`,
+              // Katex options including macros go here
+            }
+          },
         ],
       },
     },
-{
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [`gatsby-remark-katex`],
+      }
+    },
+    {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `
@@ -161,4 +158,6 @@ module.exports = {
     },
     },
   ],
-}
+};
+
+export default config

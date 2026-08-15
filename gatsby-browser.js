@@ -9,4 +9,5 @@ import "./src/style.css"
 // Highlighting for code blocks
 import "prismjs/themes/prism.css"
 
-require("katex/dist/katex.min.css");
+//Katex CSS
+import "katex/dist/katex.min.css"

@@ -4,16 +4,20 @@
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/
  */
 
+import { createRequire } from "module"
+
+const require = createRequire(import.meta.url)
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-// Define the template for blog post
+// Define the template for blog posts
 const blogPost = path.resolve(`./src/templates/blog-post.js`)
+const mathPost = path.resolve(`./src/pages/mathsblog/{mdx.frontmatter__slug}.js`)
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
-exports.createPages = async ({ graphql, actions, reporter }) => {
+export async function createPages ({ graphql, actions, reporter }) {
   const { createPage } = actions
 
   // Get all markdown blog posts sorted by date
@@ -27,18 +31,27 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
+      allMdx {
+        nodes {
+          id
+          frontmatter {
+            slug
+          }
+        }
+      }
     }
   `)
 
   if (result.errors) {
     reporter.panicOnBuild(
-      `There was an error loading your blog posts`,
+      `There was an error loading blog posts`,
       result.errors
     )
     return
   }
 
   const posts = result.data.allMarkdownRemark.nodes
+  const mathPosts = result.data.allMdx.nodes
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "pages/blog" (defined in gatsby-config.js)
@@ -60,12 +73,30 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
-}
 
+
+if (mathPosts.length > 0) {
+    mathPosts.forEach((post, index) => {
+      const mathPreviousPostId = index === 0 ? null : mathPosts[index - 1].id
+      const mathNextPostId = index === mathPosts.length - 1 ? null : mathPosts[index + 1].id
+
+      createPage({
+        path: post.frontmatter.slug,
+        component: mathPost,
+        context: {
+          id: post.id,
+          mathPreviousPostId,
+          mathNextPostId,
+        },
+        plugin: {'gatsby-plugin-mdx': { gatsbyRemarkPlugins: [`gatsby-remark-katex`] } }
+      })
+    })
+  }
+}
 /**
  * @type {import('gatsby').GatsbyNode['onCreateNode']}
  */
-exports.onCreateNode = ({ node, actions, getNode }) => {
+export const onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
@@ -82,7 +113,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 /**
  * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
  */
-exports.createSchemaCustomization = ({ actions }) => {
+export const createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
 
   // Explicitly define the siteMetadata {} object

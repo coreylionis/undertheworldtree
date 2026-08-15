@@ -17,17 +17,17 @@
     "gatsby-plugin-offline": "^6.16.0",
     "gatsby-plugin-sharp": "^5.16.0",
     "gatsby-remark-images": "^7.16.0",
+    "gatsby-remark-katex": "^7.16.0",
     "gatsby-remark-prismjs": "^7.16.0",
     "gatsby-remark-responsive-iframe": "^6.16.0",
     "gatsby-source-filesystem": "^5.16.0",
     "gatsby-transformer-remark": "^6.16.0",
     "gatsby-transformer-sharp": "^5.16.0",
     "gh-pages": "^6.3.0",
+    "katex": "^0.13.24",
     "prismjs": "^1.30.0",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "rehype-katex": "^7.0.1",
-    "remark-math": "^6.0.0"
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
     "prettier": "^3.9.6"

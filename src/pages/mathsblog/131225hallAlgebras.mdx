@@ -7,4 +7,18 @@ author: Corey
 slug: "hallalgebras"
 ---
 This week I attended AustMS, but I still had some time on the long tram trips to do a bit of study. I mostly spent this time learning what a Hall algebra is and studying the example of nilpotent representations for the Jordan quiver. Thus far, my best summary would be that the *Hall algebra* of a suitable abelian category is an associative algebra which contains information about the short exact sequence structure of the category. 
- 
+
+Let $$\mathcal{A}$$ be an abelian category. To make the objects of $$\mathcal{A}$$ into an associative $$k$$-algebra tracking short exact sequences, one natural idea is to take the free $$k$$-vector space 
+$$\mathbb{H}_{\mathcal{A}}  = \bigoplus_{M \in \textnormal{Ob}(\mathcal{A})}kM$$
+with basis the objects of $$\mathcal{A}$$, and to define the product on basis elements by
+
+$$ M*N = \sum\limits_{\text{extensions } K \text{ of } M \text{ by } N} a^K_{MN}K \ \text{ for constants } a^K_{MN} \in k.$$
+
+We use the direct sum to ensure that calculating products and sums requires determining finitely many entries. Our goals for this definition are that: 
+
+- The choices of structure constants $$a^K_{MN}$$ make the multiplication associative, and
+- The structure constants record properties of the short exact sequences/extensions in $$\mathcal{A}$$. 
+
+With this in mind, letting  
+$$a^K_{MN} = \#\{ \phi \in \text{Ext}(M,N) \ | \ \phi \text{ has middle term K } \}$$  
+allows the coefficients to enumerate extensions. 
