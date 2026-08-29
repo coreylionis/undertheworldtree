@@ -10,105 +10,138 @@ const require = createRequire(import.meta.url)
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-// Define the template for blog posts
-const blogPost = path.resolve(`./src/templates/blog-post.js`)
-const mathPost = path.resolve(`./src/pages/mathsblog/{mdx.frontmatter__slug}.js`)
+// Location of template for math blogs
+const personalMath = path.resolve(`./src/templates/personalMath.js`)
+const talks = path.resolve(`./src/templates/mathsTalkTemplate.js`)
+const blogs = path.resolve(`./src/templates/mathsBlogPost.js`)
+const notes = path.resolve(`./src/templates/notes.js`)
+
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
 export async function createPages ({ graphql, actions, reporter }) {
   const { createPage } = actions
-
-  // Get all markdown blog posts sorted by date
+  // Get all math posts sorted by date, organised by type
+  // I have to have this long ugly code block because the Gatsby devs don't want to update the build process so gatsby-node can use framents : ((
   const result = await graphql(`
-    {
-      allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
+    query {
+      personal: allMdx(filter: {frontmatter: {tags: {in: "private"} } }, sort: { frontmatter: { date: ASC } }) {
+          nodes {
+            id
+            frontmatter {
+              slug
+            }
+            internal {
+              contentFilePath
+            }
+          }
+        }
+      mathsTalks: allMdx(filter: {frontmatter: {tags: {in: "talk" } } }, sort: { frontmatter: { date: ASC } }) {
         nodes {
-          id
-          fields {
-            slug
+            id
+            frontmatter {
+              slug
+            }
+            internal {
+              contentFilePath
+            }
+          }
+        }
+      mathsBlogs: allMdx(filter: {frontmatter: {tags: {in: "blog" } } }, sort: { frontmatter: { date: ASC } }) {
+       nodes {
+            id
+            frontmatter {
+              slug
+            }
+            internal {
+              contentFilePath
+            }
+          }
+        }
+      mathsNotes: allMdx(filter: {frontmatter: {tags: {in: "notes" } } }, sort: { frontmatter: { date: ASC } }) {
+       nodes {
+            id
+            frontmatter {
+              slug
+              tags
+            }
+            internal {
+              contentFilePath
+            }
           }
         }
       }
-      allMdx {
-        nodes {
-          id
-          frontmatter {
-            slug
-          }
-        }
-      }
-    }
   `)
 
   if (result.errors) {
     reporter.panicOnBuild(
-      `There was an error loading blog posts`,
+      `There was an error loading content to gatsby-node,`,
       result.errors
     )
     return
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
-  const mathPosts = result.data.allMdx.nodes
-
-  // Create blog posts pages
-  // But only if there's at least one markdown file found at "pages/blog" (defined in gatsby-config.js)
-  // `context` is available in the template as a prop and as a variable in GraphQL
-
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-
+  function buildMath(posts, pagepath, componentpath) {
+    if (posts.length > 0) {
+    posts.forEach((post) => {
+      //Nb: You should never send a template string `foo {bar}` to pageContext; graphQL cannot 
+      //use this formatting.
       createPage({
-        path: post.fields.slug,
-        component: blogPost,
+        path: pagepath + post.frontmatter.slug,
+        component: componentpath + `?__contentFilePath=${post.internal.contentFilePath}`,
         context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
+          id: post.id, 
         },
       })
     })
   }
-
-
-if (mathPosts.length > 0) {
-    mathPosts.forEach((post, index) => {
-      const mathPreviousPostId = index === 0 ? null : mathPosts[index - 1].id
-      const mathNextPostId = index === mathPosts.length - 1 ? null : mathPosts[index + 1].id
-
-      createPage({
-        path: post.frontmatter.slug,
-        component: mathPost,
-        context: {
-          id: post.id,
-          mathPreviousPostId,
-          mathNextPostId,
-        },
-        plugin: {'gatsby-plugin-mdx': { gatsbyRemarkPlugins: [`gatsby-remark-katex`] } }
-      })
-    })
   }
+
+  const personalMathNodes = result.data.personal.nodes
+  //console.log(JSON.stringify(personalMathNodes))
+  const mathsTalkNodes = result.data.mathsTalks.nodes
+  //console.log(JSON.stringify(mathTalkNodes)) 
+  const mathsBlogNodes = result.data.mathsBlogs.nodes
+  const mathsNotesNodes = result.data.mathsNotes.nodes
+  for (let i=1; i < mathsNotesNodes.length; i++) {
+    if (mathsNotesNodes[i].frontmatter.tags.includes('talk')) {
+      mathsNotesNodes.splice(i,1)
+    }
+  }
+
+  buildMath(personalMathNodes, '/forme/', personalMath)
+  buildMath(mathsTalkNodes, '/maths/notes/', talks)
+  buildMath(mathsBlogNodes, '/maths/blog/', blogs)
+  buildMath(mathsNotesNodes, '/maths/notes/', notes)
 }
+
 /**
  * @type {import('gatsby').GatsbyNode['onCreateNode']}
  */
-export const onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+// Original source: https://suhasdara.me/blogs/gatsby-mdx-excerpts/
+export const onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions;
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
+  const end = "<!--excerpt-->"; //excerpt separator
+  const prune = 400; //default prune length
+  if(node.internal.type === `Mdx`) {
+    let content = node.body;
+    let excerptEnd = content.indexOf(end);
+    let ellipsis = excerptEnd === -1 ? "..." : "";
+    excerptEnd = excerptEnd === -1 ?
+      Math.min(content.length, prune) :
+      excerptEnd;
+    let excerpt = content.substring(0, excerptEnd) + ellipsis;
+    excerpt = excerpt.trim();
 
     createNodeField({
-      name: `slug`,
       node,
-      value,
-    })
+      name: `excerpt`,
+      value: excerpt,
+    });
   }
-}
+};
 
 /**
  * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
@@ -123,7 +156,7 @@ export const createSchemaCustomization = ({ actions }) => {
   // This way the "MarkdownRemark" queries will return `null` even when no
   // blog posts are stored inside "content/blog" instead of returning an error
   createTypes(`
-    type SiteSiteMetadata {
+    type SiteMetadata {
       author: Author
       siteUrl: String
       social: Social
@@ -138,19 +171,22 @@ export const createSchemaCustomization = ({ actions }) => {
       twitter: String
     }
 
-    type MarkdownRemark implements Node {
+    type Mdx implements Node {
       frontmatter: Frontmatter
       fields: Fields
     }
 
     type Frontmatter {
       title: String
-      description: String
+      alttitle: String
+      speaker: String
+      slug: String
       date: Date @dateformat
     }
 
     type Fields {
       slug: String
+      excerpt: String
     }
   `)
 }

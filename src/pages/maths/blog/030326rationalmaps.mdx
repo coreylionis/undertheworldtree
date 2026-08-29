@@ -1,0 +1,69 @@
+---
+title:  "Rational Maps"
+alttitle: "Rational Maps"
+date:   2026-03-03  
+tags: [blog, public]
+author: Corey
+slug: "rationalmaps"
+---
+In the category of varieties (and more generally, schemes), morphisms between varieties are determined (at least locally) by $k$-algebra homomorphisms between the rings of regular functions.  Another invariant of a variety $X$ is its function field $K(X)$, with elements the germs $\langle U, \varphi_{U} \rangle$ of $U$ an open set and $\varphi_{U} \in \mathcal{O}(U)$ and multiplication $\langle U, \varphi_{U} \rangle\ \cdot \langle V, \varphi_{V} \rangle = \langle U\cap V, \varphi_{U} \cdot \varphi_{V} \rangle$. Rational maps answer two questions for us: 
+	1. Is there a corresponding geometric category for the maps between function fields? 
+	2. Locally, regular functions are quotients of polynomials. To what extent can we obtain a similar global description of the regular functions?
+
+**Definition**: Let $X, Y$ be varieties. A **rational map** $X \to Y$ is an equivalence class  $\langle U, \varphi_{U} \rangle$ with $U \subseteq X$ open and $\varphi_{U} : U \to \varphi_{U}(U) \subseteq Y$ a morphism, where the equivalence relation is that $$\langle U, \varphi_{U} \rangle \sim \langle V, \varphi_{V} \rangle \iff \varphi_{U}|_{U\cap V} = \varphi_{V}|_{U \cap V},$$where $U\cap V \neq 0$.
+
+A rational map is **dominant** if it has a class representative $\langle U, \varphi_{U} \rangle$ with dense image in $Y$. 
+
+**Definition**: A **birational map** is a rational map with a two-sided rational inverse. If there is a birational map between $X$ and $Y$ varieties, we say that $X$ is **birationally equivalent** to $Y$. 
+
+**Lemma**: Let $\varphi, \ \psi: X \to Y$ be two morphisms agreeing on a nonempty open set $U$. Then $\varphi = \psi$ on all of $X$. <br />
+**Proof**: Any variety is irreducible, so in particular $U$ in dense in $X$. Let $f: Y \to k$ be regular and consider the closed set $V(f\varphi - f\psi)$ in $X$. We have $U \subseteq V(f\varphi - f\psi)$, so it follows that $V(f\varphi - f\psi) = X$ by density. Now points are closed for any variety, so given $y \in \varphi(X)$ we can choose a regular function $g_{y}: Y \to k$ whose only zero is $y$. For any $x \in \varphi^{-1}(y)$ we have $x \in V(g_{y}\varphi - g_{y}\psi)$ by the above statement, so that $\varphi(x) = \psi(x)$. Letting $y$ vary gives the equality of of functions. $\square$
+
+<p style={{color:"darkgray"}}>First phrasing of proof: If $\varphi(x) \neq \psi(x)$, then for $f: Y \to k$ regular we have $f\varphi - f\psi \neq 0$ (as $U$ is a collection of points on which it is nonvanishing) and $V(f\varphi - f\psi)$ is closed in $X$. The complement is an open set containing $U$, contradicting density.</p>
+
+**Note**: This result is telling us a property of the topology of varieties: the diagonal subset $\Delta_{Y} = \{(y,y) \in Y \times Y\}$ of their product is always closed. This condition is called being **separated** in algebraic geometry, and is used in analogy to Hausdorffness. Stated this way, it looks identical to the usual Hausdorff condition, but the topology on the product of varieties is not the product topology. 
+
+We need to know a little more about the category of varieties to obtain a good answer to (1). 
+
+**Lemma**: Let $Y \subseteq \mathbb{A}^n$ be the hypersurface $V(f)$, where $f \in k[x_1 \dots, x_n]$. Then the complement $H = \mathbb{A}^n \setminus Y$ is isomorphic to $V(x_{n+1}f-1) \subseteq \mathbb{A}^{n+1}$, so is an affine variety with coordinate ring $k[x_{1}, \dots, x_{n}]_{f}$. <br />
+**Proof**: Letting $A = k[x_1, \dots, x_{n}]$, the localisation map $A \to A_f$ induces a morphism of affine varieties $\varphi: V(x_{n+1}f-1) \to \mathbb{A}^n$. The preimage of a point $(a_{1},\dots, a_{n}) \in \mathbb{A}^n$ is either empty or is a single point with coordinates $(a_{1}, \dots, a_{n}, f(a_{1}, \dots, a_{n})^{-1})$ in $\mathbb{A}^{n+1},$ so $\varphi$ is injective. In particular, we see that $\text{Im}(\varphi) = H$. Finally, the map $\varphi^{-1}$ is given by 
+$$\varphi^{-1}(a_{1}, \dots, a_{n}) = (a_{1}, \dots, a_{n}, f(a_{1}, \dots, a_{n})^{-1}).$$
+Since the coordinate functions are all regular on $V(x_{n+1}f-1)$ we see that $\varphi^{-1}$ is also a morphism of varieties, proving that $H \cong V(x_{n+1}f-1)$. $\square$
+
+**Proposition**: The topology on a variety $Y$ has a base of open affine subsets.
+
+**Proof**: It suffices to show that for every open neighbourhood $p \in U$ of a point $p \in Y$, there is an affine open $p \in V \subseteq U$. A subset of $U$ is relatively open if it open in $Y$, so since $U$ is a variety we can reduce to $U=Y$, and since varieties have *quasi*affine covers we can assume $Y \subseteq \mathbb{A}^n$ for some $n.$ Let $Z = \overline{Y} \setminus Y$, and let $\mathfrak{a}$ be the ideal corresponding to this closed subset of $\mathbb{A}^n$.   Since $p \not \in Z$, there is some polynomial $f \in \mathfrak{a}$ with $f(p) \neq 0$. We have $Z \subseteq V(f) =: H$, and since $H$ does not contain $p$, $p \in Y \setminus Y\cap H$ open. On the other hand, in $\mathbb{A}^n$ we have $Y \setminus Y \cap H \subseteq \overline{Y}\cap (\mathbb{A}^n \setminus H) \subseteq \mathbb{A}^n \setminus H$ a closed subset of an affine variety, so $Y \setminus Y \cap H$ is itself affine. $\square$
+
+**Theorem**: The category of varieties over $k$ with morphisms the dominant rational maps is equivalent to the category of finitely generated field extensions of $k$. We have a bijective correspondence $$\bigl\{\text{dominant rational maps } X \to Y\bigr\} \iff\bigl\{ k\text{-algebra homomorphisms } K(Y) \to K(X)\bigr\}.$$
+
+**Proof**: If $\varphi: X \to Y$ is dominant rational represented by its values on an open $U \subseteq X$ with dense image, then for $f \in K(Y)$ regular on $V \subseteq Y$ we have $f\varphi : \varphi|_{U}^{-1}(V) \to k$ regular and $\varphi|_{U}^{-1}(V)$ is nonempty open by density of $\varphi(U)$. This construction makes the assignment $X \mapsto K(X)$ a contravariant functor from varieties with dominant rational maps to the category of field extensions of $k$, $$K\bigl( X \xrightarrow{\varphi} Y \bigr) = \quad \varphi_{*} : K(Y) \to K(X), \ \langle V, f\rangle \mapsto \langle \varphi_{U}^{-1}(V), f\varphi|_{U}\rangle.$$We have $K(Y) = K(U)$ for any open subset $U$ of $Y$ by definition, so by the above proposition every variety has the function field of an affine variety. For affine varieties the function field is just the fraction field of the coordinate ring, which is finitely generated with $\text{tr. deg}_{k}K(U) = \text{dim}(U)$. It follows that the functor $K$ has image contained in the full subcategory of finitely generated extensions of $k$.
+
+To show that $K$ is fully faithful we give an inverse construction.  Let $\theta : K(Y) \to K(X)$ be a $k$-homomorphism, and assume without loss of generality that $Y$ is affine. The coordinate ring $A(Y)$ of $Y$ is finitely generated, and if we choose generators $y_1, \dots, y_{n}$ then there are open sets $U_i \subseteq Y$ for $y_i$ on which $\theta(y_i)$ is defined, and $\theta(y_i)$ is regular on an open set $V_i$ in $X$. Since the $V_i$ contain distinguished open sets $D(f_i)$ for some polynomial $f_i$ (from the proposition), their intersection $V_1 \cap \dots \cap V_{n} =: V$ contains $D(f_{1}\dots f_{n})$ so is nonempty and open. This means that the map $y_i \to \theta(y_i)$ gives an injective homomorphism $A(Y) \to \mathcal{O}(V)$ (because injective at the function field level), corresponding to a dominant morphism $V \to Y$ of varieties, or in other words a dominant rational map $\theta': X \to Y$. Precomposition with $\theta'$ recovers $\theta$, so this construction inverts $K$ on morphisms.
+
+The last thing to check is that $K$ is essentially surjective: every finitely generated extension of $k$ is the function field of some variety. Let $L/k$ be finitely generated, and choose generators $y_1, \dots, y_{n}$. Then the sub-$k$-algebra $B$ generated by the $y_i$ (leaving out their inverses, but keeping relations between them) is a quotient of the polynomial ring $k[x_1, \dots, x_{n}]$, making $B$ the coordinate ring of an affine variety $Y$. It follows that $K(Y) \cong L$. $\square$ 
+
+With this theorem we have completely answered our question (1): varieties and dominant rational maps is the geometric category corresponding to maps of function fields. We have also made some progress towards (2): the proof shows that every variety is birational to any of its affine open subsets, and on these subsets all regular functions are in the coordinate ring, ie they are polynomials satisfying some relations. For a complete answer we would like a better model of the function field: a class of (affine) varieties whose coordinate rings also have relations we understand. To construct such a model we will use some field theory. 
+
+**Primitive Element Theorem**: If $L/K$ is a finite separable extension, there is an element $\alpha$ such that $L = k(\alpha)$. If $\beta_{1}, \dots, \beta_{n}$ are generators for $L$ as a $K$-vector space and $K$ is infinite, then we can take $\alpha = c_{1}\beta_{1} + \dots + c_{n}\beta_{n}$ for some $c_1, \dots, c_{n} \in K$.
+
+**Definition**: A field extension $K/k$ is **separably generated** if it has a transcendence base $\{x_{i}\}_{i \in I}$ so that $K/k(\{x_{i}\})$ is a separable extension (recall that usually this extension is only assumed to be algebraic). If this is the case, we call $\{x_{i}\}$ a **separating transcendence base**.
+
+**Theorem** \[[Zariski-Samuel Vol I Chp I § 13 Thm 30](https://ia801500.us.archive.org/2/items/in.ernet.dli.2015.134674/2015.134674.Commutative-Algebra-Volume--1.pdf)]: Let $K/k$ be a separably generated with finite cardinality transcendence base. Then any set of generators for $K$ contains a separating base.
+
+The proof of this result  (Maclane's theorem) inducts on the number of generators in a separating base. Once the result is known for one generator the inductive step simply involves ordering the variables so that we have a composition of extensions, one with a separating base of one element. The theoretical input to the key one-generator step is background on *perfect fields*. 
+
+**Definition**: A field $k$ is **perfect** if it is characteristic 0, or if it is characteristic $p$ and $k = k^p$, ie every element has a $p$th root. 
+
+In characteristic 0, every algebraic extension of a field is separable, and in characteristic $p$ this also holds if the base field is perfect (see the aforementioned chapter of Zariski-Samuel for details of the proof). Note in particular that algebraically closed fields in any characteristic are perfect. This result also extends to transcendental extensions, as we see below.
+
+**Theorem**  \[[Zariski-Samuel Vol I Chp I § 13 Thm 31](https://ia801500.us.archive.org/2/items/in.ernet.dli.2015.134674/2015.134674.Commutative-Algebra-Volume--1.pdf)]: If $k$ is perfect, then any extension $K/k$ with finite transcendence degree (ie a finitely generated extension) is separably generated. 
+
+**Theorem**: Any variety $X$ of dimension $n$ is birational to a hypersurface $Y$ in $\mathbb{P}^{r+1}$.
+
+**Proof**: Since the field $k$ of definition is algebraically closed, the function field $K(X)/k$ is finite separably generated over $k$, so there is a transcendence base $\{x_1, \dots, x_{r}\}$  such that $K(X)/k(x_{1}, \dots, x_{r})$ is finite separable. The primitive element theorem implies that $K(X) = k(x_1, \dots, x_{r}, y)$ for some separable element $y$ over $k(x_{1},\dots, x_{r})$. 
+
+Since $y$ is a zero for an irreducible rational polynomial in $x_1, \dots, x_{r}$, we can clear denominators to express as a root of an irreducible polynomial $f(x_1,\dots, x_{r}, y)$ in $k[x_{1}, \dots, x_{r}, y]$. The polynomial $f$ cuts out a hypersurface $V(f) \subseteq \mathbb{A}^{r+1}$ satisfying $$K(V(f)) = \text{Frac}\left( k[x_{1},\dots, x_{r},y]/(f) \right) = k(x_{1},\dots, x_{n},y),$$so by the equivalence of categories between varieties with rational maps and function fields we have that $X$ is birational to $V(f)$. The projective closure gives the corresponding hypersurface $Y$. $\square$
+
+**Remark**: It may be unclear why we take the projective closure when we have already obtained a good affine model for the variety. One reason for this is to allow us to use the strongest scheme-theoretic machinery available to study the birational equivalence class of $X$: projective structure has features such as a grading on the homogeneous coordinate ring and the existence of natural ample line bundles on the variety which are helpful for algebraic applications. Topologically, it may be desirable to compactify $V(f)$, and the projective closure is a simple way to do this. 
+
+We now also have (2): on our affine model for $X$, the regular functions are described by polynomials modulo one relation. The drawback of this statement is that the description is only valid on a dense open subset of $X$, which we have not identified explicitly. 

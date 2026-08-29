@@ -1,0 +1,13 @@
+---
+title:  "Group Varieties and Schemes"
+alttitle: "Group Varieties"
+date:   2026-02-24  
+tags: [blog, public]
+author: Corey
+slug: "groupvarieties"
+---
+Yesterday I spent a little time on a Hartshorne exercise which checks that $\mathbb{G}_{a}$ and $\mathbb{G}_{m}$ are group schemes. By now I've thought about this a few times and it's included in my thesis, but I learnt some new ideas by proving this in the category of varieties, which feels like another piece of working with the variety-theoretic definition of regular functions (something I've always been uneasy about, I gravitate to the scheme theory because I can use more algebra). 
+
+Elements of the ground field $k$ correspond to points/maximal ideals of $\mathbb{G}_{a}$ one-to-one and elements of $k^* = k \setminus \{0\}$ correspond to points of $\mathbb{G}_{m}$, so that functions $X \to k$ from a variety correspond to functions $X \to \mathbb{G}_{a}$ and functions $X \to k^*$ correspond to functions $X \to \mathbb{G}_{m}$. It follows that the function $X \to k$ is regular if and only if $X \to \mathbb{G}_{a}$ is a morphism, and the same holds in the $\mathbb{G}_{m}$ case. Having such an explicit correspondence is probably a unique feature of (products of) $\mathbb{G}_{m}$ and $\mathbb{G}_{a}$, but checking representability of a moduli functor by looking at $k$ points is a useful idea, made simpler by the regular function notion. 
+
+I also reinforced for myself the idea that sometimes the best way is to compute and find out. I was trying to write down the comultiplication for $\mathbb{G}_{m}$ and $\mathbb{G}_{a}$ and my immediate instinct was to google to make sure I didn't start something monstrous and complicated. I did google and my guess was correct (it was, after all, an educated guess), but it turns out that checking the induced map on points is actually very doable, and this would have been true even with the wrong guess. For example, the comultiplication for $\mathbb{G}_{m}$ is given by $$k[x^{\pm 1}] \xrightarrow{\mu} k[x^{\pm 1}, y^{\pm 1}], \quad x \mapsto xy;$$ since $\mu^{-1}(x-a, y-b)$ has form $(x-c)$ for some $c \in k$ and $\mu(x-c) = xy - c$, we find that the only element of $(x-a, y-b)$ with $1$ for the coefficient of $xy$ and no other terms is $$(x-a)(y-b) + b(x-a) + a(y-b) = xy +ab -ab -ab = xy - ab,$$ so that $c = ab$ and the map on points is multiplication $(a, b) \to ab$. 

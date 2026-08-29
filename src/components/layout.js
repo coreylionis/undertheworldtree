@@ -24,10 +24,7 @@ const Layout = ({location, pageTitle, children }) => {
         <ul className={baseStyles.navLinks}>
           <li className={baseStyles.navLinkItem}><Link className={baseStyles.navLinkText} to="/">Home</Link></li>
           <li className={baseStyles.navLinkItem}><Link className={baseStyles.navLinkText} to="/about">About</Link></li>
-          <li className={baseStyles.navLinkItem}><Link className={baseStyles.navLinkText} to="/mathsblog">Maths Blog</Link></li>
-          <li className={baseStyles.navLinkItem}><Link className={baseStyles.navLinkText} to="/blog/hello-world">Tutorial: Hello World</Link></li>
-          <li className={baseStyles.navLinkItem}><Link className={baseStyles.navLinkText} to="/blog/my-second-post">Tutorial: Second Page</Link></li>
-          <li className={baseStyles.navLinkItem}><Link className={baseStyles.navLinkText} to="/blog/new-beginnings">Tutorial: New Beginnings</Link></li>
+          <li className={baseStyles.navLinkItem}><Link className={baseStyles.navLinkText} to="/maths">Maths</Link></li>
         </ul>
       </nav>
       <main>

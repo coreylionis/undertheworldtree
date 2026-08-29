@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow: /forme/
+
+#Sitemap goes here

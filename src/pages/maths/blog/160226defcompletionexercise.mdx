@@ -1,0 +1,26 @@
+---
+title:  "Deformation Functor under Completion"
+alttitle: "Deformation and Completion"
+date:   2026-02-16  
+tags: [blog, public]
+author: Corey
+slug: "defcompletion"
+---
+
+Today I would like to discuss the proof that if $R$ is a local ring with residue field $k$, the functors $h_R$ and $h_{\hat{R}}$ are isomorphic, where $h_S : \mathsf{Art}/k \to \mathsf{Set}, h_{S}(A) = \text{Hom}_{k}(S, A)$ is the functor sending an artinian local ring with residue field $k$ to the set of maps into it from $S$. We will see that this boils down to the fact that artinian local rings are complete (I will not prove it this way, but trust that readers can see the underlying idea), but I would also like to talk about identifying this as the correct deformation functor. 
+
+On the one hand, $h_{S}$ is an obvious choice since it's the restriction of the contravariant representing functor for $\text{Spec} \ S$ to $\mathsf{Art}/k$, which we use because the category of schemes has fibre products. On the other, the completion $\hat{R}$ is universally mapped *into*, so the functor $h^{S}(A) = \text{Hom}_{k}(A, S)$ might seem more appropriate. Let's see what happens if we expand the universal property. Working with our local ring $R$, for $A$ Artin we have $$h^{\hat{R}}(A) = \text{Hom}_{k}(A, \hat{R}) = \text{Hom}_{k}(A, \varprojlim_{n} \ R/\mathfrak{m}_{R}^n) = \varprojlim_{n} \ \text{Hom}_{k}(A, R/\mathfrak{m}_{R}^n),$$
+but nilpotence of the maximal ideal in $A$ does not allow us to relate back to $R$ since it does not furnish us with a choice of element in $R$ corresponding to the image of an element in $A$ (reason: two elements of $R$ can correspond to the same sequence in $\hat{R}$; their difference lives in $\cap_{n \geq 0}\mathfrak{m}_{R}^n$, so when this ideal is nonzero we have no preferred choice of class representative). So we see that our proposition is unlikely to hold if we use the $h^R$ functors without assuming $R$ itself is Artin (this would make $\cap_{n \geq 0}\mathfrak{m}_{R}^n = 0$). Local rings with fixed residue field arise naturally in geometry but artinian rings appear in more specialised contexts, so we see that the contravariant hom-functor-functor is not ideal for deformations.
+
+Back to the exercise, we show that the completion map $\varphi_{R}: R \to \hat{R}, r \mapsto (r \pmod{\mathfrak{m}_{R}}, r \pmod{\mathfrak{m}_{R}^2}, \dots)$ induces our isomorphism of functors. It suffices to show that 
+$$
+\varphi_{R}^* : h_{\hat{R}}(A) \to h_{R}(A)
+$$ 
+is an isomorphism for every Artin local ring $A$ with residue field $k$. Fix $n$ minimal so that $\mathfrak{m}_{A}^n = 0$. 
+For distinct maps $f, f': \hat{R} \to A$, there is a sequence $\tilde{r} = (r_{0}, r_{1}, \dots) \in \hat{R}$  such that $f(\tilde{r}) \neq f'(\tilde{r})$, and we can construct an element $s$ of $R$ with $f\varphi_{R}(s) \neq f'\varphi_{R}(s)$ as follows. Choose any coset representative $s_{0}$ of $r_0$, so that $\tilde{r} - \varphi_{R}(s_{0}) \in \mathfrak{m}_{R}\hat{R}$. Then if $s_1$ is a coset representative for $r_1 - [s_0]$ in $R/\mathfrak{m}_{R}^2$ we have $s_1 \in \mathfrak{m}_{R}$, so that 
+$$
+\begin{aligned}\varphi_{R}(s_0 + s_1) &= (r_{0}, r_1 - s_{0} + s_{0}, \ s_{0} + s_{1} \pmod{\mathfrak{m}_{R}^3}, \dots) \\ &= (r_{0}, r_{1}, s_{0} + s_{1}, \dots).\end{aligned}
+$$ 
+We can continue this process to approximate $\tilde{r}$ to any finite number of entries, so let us take $s$ with $\varphi_R(s) = (r_0, \dots, r_n, s \pmod{\mathfrak{m}_{R}^{n+1}}, \dots)$ in $\hat{R}$. We claim that this $s$ satisfies $f\varphi_{R}(s) \neq f'\varphi_{R}(s)$. This follows as soon as we know that for any $f : \hat{R} \to A$, $f(\mathfrak{m}_{R}^n) \subseteq \mathfrak{m}_{A}^n$ because then $f(\tilde{r})$ is independent of the entries of $\tilde{r}$ past $n$. But this statement is clear, for $f(\mathfrak{m}_{R}) \subseteq \mathfrak{m}_{A}$ and multiplying gives the same inclusion for general $n$. Thus $\varphi_{R}^*$ is injective. 
+
+Now consider a general map $g: R \to A$. By what we have just mentioned, $g(\mathfrak{m}_{R}^n) = 0$, so the idea is to define a map $\tilde{g}: \hat{R} \to A$ which only uses information from the first $n$ entries of the sequences in $\hat{R}$. Explicitly, for $\tilde{r} \in \hat{R}$ we set $\tilde{g}(\tilde{r}) = g(r)$, where $r$ is any element of $R$ for which $\varphi_{R}(r)$ agrees with $\tilde{r}$ to $n$ places. That $g(\mathfrak{m}_{R}^n) = 0$ ensures this is a well-defined map, and additivity, the multiplicative property, and the $k$-homomorphism condition for $\tilde{g}$ all follow from these properties for $R$ and from the homomorphism $\varphi_{R}$. Since $\tilde{g}\varphi_{R} = g$ by construction, we have the surjectivity of $\varphi_{R}^*$.

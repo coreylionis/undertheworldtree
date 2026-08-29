@@ -1,0 +1,16 @@
+---
+title:  "Total Space of Bundles on Proj(S)"
+alttitle: "Proj Bundles"
+date:   2026-01-31  
+tags: [notes, public]
+author: Corey
+slug: "projbundles"
+---
+I have a lot of trouble remembering how the Proj functor works and how to think about sheaves of $\mathcal{O}_X$-modules on these spaces. Part of what makes this hard is that everybody finds it technical and explains it in their own way; in this document, I'll write things down in *my* own way (lifted from Hartshorne but more explicit, probably) so that I have a reference. <br /> Let $S$ be a graded ring, and let $\mathsf{Proj}(S)$ be the set of homogeneous primes in $S$. To topologise $\mathsf{Proj}$ we take the sets $V(\mathfrak{a})$ as our closed sets, and to get a structure sheaf we define 
+$$
+\mathcal{O}(U) = \bigl\{s : U \to \coprod_{\mathfrak{p} \in U}S_{(\mathfrak{p})},  \substack{s(\mathfrak{p}) \ \in \ S_{(\mathfrak{p})} \text{ for all } \mathfrak{p} \in \mathsf{Proj}(S) \\ \text{locally } s \text{ is a quotient } a/f \\ \text{of homog elements in } S \text{ of same degree}}\bigr \},
+$$ 
+where $S_{(\mathfrak{p})}$ is the ring of degree 0 elements in $T^{-1}S$ and where $T$ is the multiplicative system of homog elements in $S \setminus \mathfrak{p}$. One then shows that this makes $\mathsf{Proj}(S)$ a locally ringed space, having distinguished open sets $D_+(f) = \{\mathfrak{p} \ | \ f \not \in \mathfrak{p} \}$ for homogeneous $f$ such that $D_+(f) \cong \text{Spec} \ S_{(f)}$. 
+
+Sheaves of modules $\tilde{M}$ on $\mathsf{Proj}$ are described in the same way as the structure sheaf $\mathcal{O}$: for a graded $S$-module $M$, we define $M_{\mathfrak{p}}$ in the analogous way and look at stalk-functions $m : U \to \coprod_{\mathfrak{p} \in U} M_{(\mathfrak{p})}$. A feature that distinguishes $\mathcal{O}$-modules from $\mathcal{O}_X$-modules on $X$ affine is existence of **Serre twists**. For $n \in \mathbb{Z}$, we can twist the grading of $S$ by making the $m$th component of $S$ into the $m+n$th component of $S(n)$. This twisting is compatible with localisation, so it extends to give twists of $\mathcal{O}$. Finally, we get twists of $\mathcal{O}$-modules by setting $\tilde{M}(n) = \tilde{M} \otimes \mathcal{O}(n)$. Structurally, $\tilde{M}$ and $\tilde{M}(n)$ are quite different sheaves: the former has local and global values determined by the degree 0 parts of $M$ and its localisations, while the latter has local and global values from the degree $n$ parts.  
+

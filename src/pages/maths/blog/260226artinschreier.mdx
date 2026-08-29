@@ -1,0 +1,34 @@
+---
+title:  "The Artin-Schreier Theorem"
+alttitle: "Artin-Schreier"
+date:   2026-02-26  
+tags: [blog, public]
+author: Corey
+slug: "artinschreier"
+---
+I would like this note to be a running document on Galois theory in characteristic $p$ and mixed characteristic for algebraic geometry. Hopefully the scope will become apparent in time! 
+
+The last few weeks I've slowly prepared to learn the Artin-Schreier Theorem, a project which was originally motivated by wanting to attend lectures on perfectoid spaces and almost rings. As the weeks of linear algebra tutoring went by it became clear to me that I was unhappy attending without more background, so my goal has instead become to understand this theorem and its application in that context. Now that I've finally achieved part of that, I think the goal is to learn some Kummer theory and the Witt vector version of the story, and then I will see how I can course-correct from there. 
+
+From my current perspective, it looks like the goal of this theory is to explicitly describe finite cyclic extensions of fields. We use two powerful theorems in field theory to facilitate the analysis: 
+	1. **Hilbert's Theorem 90**: Let $K/k$ cyclic of degree $n$. An element $\beta \in K$ has norm $N^K_{k}(\beta) = 1$ if and only if there is $\alpha \in K^\times$ with $\beta = \frac{\alpha}{\sigma(\alpha)},$ with $\sigma$ a generator of $\text{Gal}(K/k).$ An element $\beta \in K$ has trace $\text{Tr}^K_{k}(\beta) = 0$ if and only if there is $\alpha \in K$ such that $\beta  = \alpha - \sigma(\alpha)$.
+	2. **Artin's Linear Independence of Characters**: Let $\chi_1, \dots, \chi_n : K^\times \to K^\times$ be distinct homomorphisms, $K$ a field. Then the $\chi_i$ are $K$-linearly independent.
+	
+We first analyse the simplest case. 
+
+**Theorem**: Let $k$ be a field, and let $n \in \mathbb{Z}_{> 0}$ be prime to the characteristic of $k$. Assume that $k$ contains a primitive $n$th root of unity. Then: 
+	1. Cyclic extensions $K/k$ of degree $n$ admit primitive elements $\alpha$ which satisfy a polynomial $X^n - a$ for some $a \in k$. 
+	2. For a polynomial $X^n -a$ and a root $\alpha$ in the algebraic closure of $k,$ the extension $k(\alpha)/k$ is cyclic of degree $d \ | \ n$ and we have $\alpha^d \in k$. 
+
+**Proof**: If $K/k$ is cyclic of degree $n$, then for $\zeta$ a primitive $n$th root in $k$ we have $N^K_k(\zeta^{-1}) =1,$ so by Hilbert 90 there is some $\alpha \in K$  with $\sigma(\alpha) = \zeta \alpha \leftrightarrow \zeta^{-1} = \frac{\alpha}{\sigma(\alpha)}$. The Galois conjugates of $\alpha$ are then $\alpha, \zeta\alpha, \dots, \zeta^{n-1}\alpha$ (all distinct), so that $k(\alpha) = K$. We have $\sigma(\alpha^n) = \sigma(\alpha)^n = \alpha^n$, so that $\alpha^n$, being fixed by the action of the Galois group, is in $k$ and $\alpha$ is a root of $X^n - (\alpha^n)$. 
+If $\alpha$ is a root of $X^n - a$ then so is $\zeta^i \alpha$ for $i=1, \dots, n$, which makes $k(\alpha)/k$ a normal extension. Because the roots are distinct, the extension is also separable, hence Galois. Let $\sigma$ generate $\text{Gal}(k(\alpha)/k)$, and write $\sigma(\alpha) = \omega \alpha$, $\omega$ a primitive $d$th root of unity for some $d \ | \ n$. Then $\sigma(\alpha)^d =\omega^d \alpha^d = \alpha^d$, so  that $\alpha^d \in k$ and $k(\alpha)/k$ is cyclic of order $d$. $\square$ 
+
+The Artin-Schreier theorem uses the same techniques as the above theorem but with the additive version of Hilbert 90. Note that here the characteristic plays the role that existence of a $n$th root of unity did in the multiplicative case. 
+
+**Artin-Schreier Theorem**: Let $k$ be a field of characteristic $p$. Then:
+	1. Cyclic extensions $K/k$ of degree $p$ admit primitive elements $\alpha$ satisfying a polynomial $X^n - X - a$ for some $a \in k$. 
+	2. A polynomial $X^n - X -a, \ a \in k$ either has no roots in $k$ or *all* roots in $k$. In the former case, the polynomial is irreducible and for any root $\alpha$, $k(\alpha)/k$ is cyclic of order $p$.
+	
+**Proof**: Let $K/k$ be cyclic of degree $p$. Then we have $\text{Tr}^K_{k}(-1) = 0$, so by additive Hilbert 90 there is $\alpha \in K$ with $\sigma(\alpha) = \alpha +1$. The elements $\alpha, \alpha + 1, \dots, \alpha + (p-1)$ are the distinct conjugates of $\alpha$ in $K$ and there are $p$ of them, so $K = k(\alpha)$. We have $$\sigma(\alpha^p) = \sigma(\alpha)^p = (\alpha+1)^p = \alpha^p + 1 (\text{binomial theorem mod $p$}),$$ so that $\sigma(\alpha^p - \alpha) = \alpha^p - \alpha =: a \in k$ and $\alpha$ is a root of  $X^n - X - a$. 
+
+Now consider the polynomial $f(X) = X^n - X -a$ with $a \in k$. If $\alpha \in k$ is a root of $f(X)$, then by what we have shown above also $\alpha + 1, \dots, \alpha + (p - 1)$ are roots in $k$ and the polynomial splits in $k$ as soon as it has a single root in $k$. Otherwise, assume there are no roots in $k$. To show irreducibility, suppose that $f(X) = g(X)h(X)$ where $1 \leq \text{deg}(g) < p$. Then $g$ is a product of $d$ factors $X - \alpha - i$ for distinct choices of $i$ (we know how $f$ splits in $k(\alpha)$), and in particular the coefficient of $X^{d-1}$ in $g$ has the form $d\alpha + j$ for some integer $j$ mod $p$. But we have $g \in k[X]$, so $d\alpha + j \in k$ with $j \in k, d \in K^\times$ tells us that also $\alpha \in k$, contradicting our assumption on roots of $f$.  So $f(X)$ is irreducible with $p$ distinct roots in $k(\alpha)$, making $k(\alpha)/k$ Galois. Since $\alpha, \alpha + 1$ are both roots of $f$ there is some $\sigma \in \text{Gal}(k(\alpha)/k)$ with $\sigma(\alpha) = \alpha+1$, so that $\text{Gal}(k(\alpha)/k)$ is cyclic with $\sigma$ a generator. $\square$ 

@@ -14,9 +14,9 @@ const config = {
     title: `Under the World Tree`,
     author: {
       name: `Corey Lionis`,
-      summary: `World-tree hollow denizen.`,
     },
     description: `Personal site Corey Lionis.`,
+    siteurl: siteUrl, 
     pathPrefix: '/',
     social: {
       github: `coreylionis`,
@@ -30,13 +30,6 @@ const config = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name:'mathsblog',
-        path:`${__dirname}/src/pages/mathsblog`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
         name:'pages',
         path:`${__dirname}/src/pages`,
       },
@@ -44,16 +37,30 @@ const config = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name:'blog',
-        path:`${__dirname}/src/pages/blog`,
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
         name:'images',
         path:`${__dirname}/src/images`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [`gatsby-remark-katex`, {
+          resolve: `gatsby-remark-images`, 
+          options: {
+            maxWidth: 630,
+            loading: "eager",
+          }
+        }],
+        mdxOptions: {
+          remarkPlugins: [
+            require(`remark-math`),
+          ],
+          rehypePlugins: [
+            require(`rehype-katex`)
+          ],
+        },
+      }
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -66,27 +73,8 @@ const config = {
             },
           },
           `gatsby-remark-prismjs`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 630,
-            },
-          },
-          {
-            resolve: `gatsby-remark-katex`,
-            options: {
-              strict: `ignore`,
-              // Katex options including macros go here
-            }
-          },
         ],
       },
-    },
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        gatsbyRemarkPlugins: [`gatsby-remark-katex`],
-      }
     },
     {
       resolve: `gatsby-plugin-feed`,
@@ -97,36 +85,33 @@ const config = {
               siteMetadata {
                 title
                 description
-                siteUrl
-                site_url: siteUrl
+                siteurl
               }
             }
           }
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
+                  url: site.siteMetadata.siteurl + node.frontmatter.slug,
+                  guid: site.siteMetadata.siteurl + node.frontmatter.slug,
+                  custom_elements: [{ "content:encoded": node.body }],
                 })
               })
             },
             query: `{
-              allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+              allMdx(sort: {frontmatter: {date: DESC}}) {
                 nodes {
-                  excerpt
-                  html
-                  fields {
-                    slug
-                  }
+                  excerpt(pruneLength:160)
+                  body
                   frontmatter {
                     title
                     date
+                    slug
                   }
                 }
               }
@@ -154,7 +139,7 @@ const config = {
     {
     resolve: `gatsby-plugin-offline`,
     options: {
-      precachePages: [`/about/`, `/projects/*`],
+      precachePages: [`/about/`, `/maths/*`],
     },
     },
   ],

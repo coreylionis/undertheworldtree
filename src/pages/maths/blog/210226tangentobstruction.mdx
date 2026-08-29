@@ -1,0 +1,29 @@
+---
+title:  "Tangent-Obstruction Theories"
+alttitle: "Tangent-Obstruction"
+date:   2026-01-21  
+tags: [blog, public]
+author: Corey
+slug: "tangentobstruction"
+---
+
+If $R$ is a local $k$-algebra with residue field $k$ and finite tangent space $(\mathfrak{m}_{R}/\mathfrak{m}_{R}^2)^\vee$ of dimension $d$, then $R$ is a quotient of a power series ring $S = k[\mkern-3mu [t_{1}, \dots, t_{d}]\mkern-3mu]$ by an ideal $J \subseteq (t_{1}, \dots, t_{d})^2$.  Let $T$ be the tangent space of $S$ and write $n = (t_1, \dots, t_{n})$. Then we have the following<br />**Theorem**: For every small extension $$0 \to M \to B \to A \to 0$$ (ie a surjection of Artinian $k$-algebras with kernel $M$ annihilated by $\mathfrak{m}_{B}$), there is a short exact sequence $$0 \to T\otimes_{k} M \to \text{Hom}_{k}(R, B) \to \text{Hom}_{k}(R,A) \xrightarrow{ob} (J/nJ)^\vee \otimes_{k} M,$$ which is functorial in small extensions. 
+
+What this theorem says is that: 
+	- In this setting, a map $\varphi : R \to A$ lifts to $B$ if and only if $\text{ob}(\varphi) = 0$
+	- When a lift of $\varphi: R \to A$ exists, the set of all lifts to $\varphi$ has a transitive action by $T\otimes_{k}M$, an is thus an affine space ($T\otimes_{k}M$ is a $k$-vector space, so the set of lifts over $\text{Hom}_{k}(R, A)$ is a fibration with affine fibres) 
+
+The proof of the theorem has three ingredients: for the first we use that there are no relations among the $t_i$ in $S$ to lift maps $S \to A$ to $B$. For the second, we show that the difference between two lifts of the same map is a derivation $S \to M,$ and the tangent space appears as the kernel because $\text{Der}_{k}(S,M) \cong T_{S}\otimes_{k} M$. Finally, we notice that all lifts agree on $J$ with $nJ$ in the kernel of every lift by smallness, so the common values of a lift for $\varphi$ give an element of $\text{Hom}_{k}(J/nJ, M) \cong (J/nJ)^\vee \otimes_{k} M$. 
+
+If we plug in the local ring at a point $R = \mathcal{O}_{X, \ p}$ of a smooth variety of dimension $d$ (or the ring at a smooth point of a general variety), then taking $A = k$ and $B = k[\varepsilon]/\varepsilon^2$, $\text{Hom}_{k}(R, A) = \text{pt}$ and $\text{Hom}_{k}(R,B)$ is the tangent vectors to $X$ at $p$ (HS II.2.8). Since $T \otimes_{k} M = T \otimes (e) \cong T$ as vector spaces, we have $T \cong \text{Hom}_{k}(R, B)$ and the obstruction map vanishes. This says that all tangent vectors in $\text{Hom}_{k}(R, B)$ sit over the same point $p$ (which we already knew). But notice that we can also use the tangent-obstruction sequence to study lifts to higher-order tangents/jets. 
+
+
+To proceed, we need to take on faith that this theorem reflects expected properties about deformations: there should be certain 'directions' we can deform in and others for which there are obstructions, and we should have a multidimensional 'space' of deformations. Perhaps we know this by understanding that deformations correspond to classes in $H^1(X, T_{X})$. We should be completely satisfied with this theorem and look for other situations where it holds, leading us to define: 
+
+A deformation functor $D$ has a **tangent-obstruction theory** if there are finite-dimensional $k$-vector spaces $T_1$ (the **tangent space**) and $T_2$ (the **obstruction space**) so that: 
+	1) For all small extensions $$0 \to M \to A \to B \to 0,$$ there is a corresponding exact sequence of sets $$T_{1} \otimes_{k} M \to D(B) \to D(A) \xrightarrow{ob} T_{2}\otimes_{k}M.$$
+	2) If $A = k$, the map $T_{1} \otimes_{k}M \to D(B)$ is injective.
+	3) The tangent-obstruction sequences are functorial in small extensions.
+
+Sometimes we will be able to develop a tangent-obstruction theory where $T_1$ and $T_2$ need not be finite-dimensional. In this case, we call the theory a **generalised tangent-obstruction theory** (our tangent-obstruction theorem is *more general* than the motivating case).
+

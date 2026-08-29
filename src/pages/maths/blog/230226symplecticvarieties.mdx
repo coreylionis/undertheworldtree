@@ -1,0 +1,42 @@
+---
+title:  "Symplectic Structure on Varieties"
+alttitle: "Symplectic Varieties"
+date:   2026-02-23  
+tags: [blog, public]
+author: Corey
+slug: "symplecticvarieties"
+---
+Let $X$ be a variety. A **symplectic structure** on a holomorphic manifold/algebraic variety is a nondegenerate 2-form $\omega \in \Gamma(X, \Omega^2_{X})$ (where $\Omega^2_X$ is the sheaf of holomorphic or algebraic 2-forms on $X$) satisfying $d\omega = 0$.
+
+**Example**: Let $M$ be a manifold, $X = T^*M$ its cotangent bundle. We construct a symplectic form $\omega$ as $d\lambda$ for some $\lambda : TX \to \mathbb{C}$, which ensures $d\omega = 0$. <br />Let $x \in M$ and $\alpha \in X_x$, the fibre over $x$. The projection map $\pi : X \to M$ induces a tangent map $\pi_{*} : T_\alpha X \to T_x M$ , and we define $\lambda$ by setting 
+$$
+\lambda(\xi) = \alpha(\pi_{*}\xi), \text{where } \xi \in T_{\alpha}(X).
+$$
+In this description we can see naturality of $\lambda$, but for nondegeneracy and understanding how to evaluate the form an expression in coordinates is preferable. 
+Let $q_1, \dots, q_{n}$ be local coordinates on $M$, and let $p_1, \dots, p_{n}$ be the corresponding dual coordinates on $T^*M$, so that $p_{i}\left( \frac{\partial}{\partial q_{i}} \right) = \delta_{ij}$ and $(q_{1}, \dots, q_{n}, p_{1}, \dots, p_{n})$ gives coordinates for $X$.  Then elements of the tangent space $TX$ have the form 
+$$
+\xi = \sum_{i=1}^n b_{i}\frac{\partial}{\partial q_{i}}(\alpha, x) + c_{i}\frac{\partial}{\partial p_{i}}(\alpha, x)
+$$ 
+with $b_i, c_i \in \mathbb{C}$ and $(x, \alpha) \in X$ (so $x \in M, \alpha \in T^*_xM$). The map $\pi$ projects onto the $q$-coordinates, so the corresponding tangent map does the same: 
+$$
+\pi_{*}\left( \sum_{i=1}^n b_{i}\frac{\partial}{\partial q_{i}}(x, \alpha) + c_{i}\frac{\partial}{\partial p_{i}}(x, \alpha) \right) = \sum_{i=1}^n b_{i}\frac{\partial}{\partial q_{i}}(x, \alpha).
+$$
+Now we can calculate 
+$$
+\begin{aligned}
+\lambda(\xi) = \alpha\left( \sum_{i=1}^n b_{i}\frac{\partial}{\partial q_{i}}(x, \alpha) \right) &= \sum_{i=1}^n p_{i}(\alpha)p_{i}\left( \sum_{j=1}^n b_{i}\frac{\partial }{\partial q_{i}}(x, \alpha) \right) \\ &= \sum_{i=1}^n b_{i}p_{i}(\alpha)
+\end{aligned}
+$$ 
+using our dual coordinates, which identifies $\lambda$ with $\sum_{i} p_{i} \ \mathrm{d} q_{i}$ and hence $\omega$ with $\sum_{i} \mathrm{d}p_{i} \wedge \mathrm{d}q_{i}.$ Now $X$, being a holomorphic manifold, is locally isomorphic to $\mathbb{C}^{2n}$ and the local form of $\omega$ is nondegenerate here: 
+$$
+\omega(e_i, e_j) =  \frac{1}{2}
+\sum_{i}\mathrm{d}p_{i}(e_{i})\wedge \mathrm{d}q_{i}(e_{j}) = \begin{cases}1, \ j = i + n \\ -1, \ i = j  + n\\ 0, \text{ else} \end{cases},
+$$ 
+in the standard basis for $T^*\mathbb{C}^{2n}$, giving block matrix form
+$$
+\omega = \begin{pmatrix}
+0 & I_{n} \\ 
+-I_{n} & 0
+\end{pmatrix}.
+$$
+Hence we have a symplectic form on $T^*M$ for for any holomorphic manifold, agreeing in local coordinates with the canonical symplectic form on $\mathbb{C}^{2n}$.

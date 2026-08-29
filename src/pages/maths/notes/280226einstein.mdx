@@ -1,0 +1,25 @@
+---
+title:  "Einstein Summation"
+alttitle: "Einstein Summation"
+date:   2026-02-28  
+tags: [notes, public]
+author: Corey
+slug: "einsteinsums"
+---
+I often have trouble remembering the conventions for summation and which spaces the vectors are supposed to live in. I would really like to have good notes on graduate differential geometry as a whole in the future, but for now I will start with something I need to use a lot. 
+
+**Definition**: Let $V$ be a finite-dimensional (real or complex) vector space with dual $V^*$. The space $$V^r_{s} = V^{\otimes r} \otimes V^{* \ \otimes s}$$ is called the space of **type (r,s)-tensors**. The integer $r$ is called the **contravariant order** and $s$ is the **covariant order**. 
+
+**Contravariance** here means that under a change of basis $P_{\mathcal{B} \mathcal{B'}}$ from basis $\mathcal{B}$ to $\mathcal{B'}$, the coordinate vector $\begin{bmatrix}v_{1} \\ \vdots \\ v_{n}\end{bmatrix}_{\mathcal{B}}$ of any point $v \in V$ , if interpreted as $\mathcal{B'}$ coordinates instead, gives coordinates for the point $P_{\mathcal{B} \mathcal{B'}}^{-1}v$.  
+
+On the other hand, **covariance** says that with change-of-basis $P_{\mathcal{B} \mathcal{B'}}$ for $V$, the coordinates $\begin{bmatrix}v^*_{1} \\ \vdots \\ v^*_{n}\end{bmatrix}_{\mathcal{B}}$ for vector $v^* \in V$ with respect to $\mathcal{B}$ correspond to $P_{\mathcal{B} \mathcal{B'}}^Tv^*$ as coordinates for $\mathcal{B'}$ (since the dual transformation to left-multiplication by $P_{\mathcal{B} \mathcal{B'}}$ is given by left-multiplication by $(P_{\mathcal{B} \mathcal{B'}}^{-1})^T$.
+
+Physicists also like to define tensors as collections of coordinates specified by type $(r,s)$-multi-indices and subject to the co/contravariance relations, which is an equivalent formulation.
+
+For calculations, we use **row vectors** for coordinates in $V^*$ and **column vectors** for coordinates in $V$. 
+
+**Tensor contraction**: For any pair of indices $1 \leq \lambda \leq r$, $1 \leq \mu \leq s$ we get a homomorphism $C_{\lambda \mu} : V^r_{s} \to V^{r-1}_{s-1}$, defined by extending the map $$\begin{aligned}
+&C_{\lambda \mu}(v_{1}\otimes{\dots} \otimes v_{r}\otimes v^{* \ 1}\otimes{\dots} \otimes v^{* \ n}) \\ = \ &\langle v_{\lambda}, v^{* \ \mu}\rangle v_{1}\otimes\dots \otimes \hat{v}_{\lambda} \otimes \dots \otimes v_{r}\otimes v^{* \ 1}\otimes\dots \otimes \hat{v}^{* \ \mu} \otimes \dots \otimes v^{* \ n}\end{aligned}$$ to linearity (where $\hat{}$  means to remove those indices from the tensor). 
+
+**Raising and lowering indices with a (pseudo)metric**: If instead of the canonical pairing between $V$ and $V^*$ we contract using an inner product with matrix $\eta_{\mu \nu}$  then we can write the front coefficient either as $v_{\lambda}$  
+ 
