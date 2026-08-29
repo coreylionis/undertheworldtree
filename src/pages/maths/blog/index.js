@@ -6,6 +6,8 @@ import Mathtext from "../../../components/mathtext"
 import "katex/dist/katex.min.css"
 import "gatsby-remark-katex"
 
+//TODO: Load blog excerpts underneath dates with math that renders correctly. <Mathtext>{node.fields.excerpt}</Mathtext>
+
 const MathsBlog = ({location, data}) => {
     console.log(typeof data.allMdx.nodes[0].body)
     return (
@@ -15,7 +17,6 @@ const MathsBlog = ({location, data}) => {
                     <article key={node.id}>
                         <h2><Link to={`./${node.frontmatter.slug}`}>{node.frontmatter.title}</Link></h2>
                         <p>Posted: {node.frontmatter.date} | Updated: {node.parent.modifiedTime}</p>
-                        <Mathtext>{node.fields.excerpt}</Mathtext>
                     </article>
                 ))
             }
