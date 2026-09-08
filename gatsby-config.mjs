@@ -134,12 +134,16 @@ const config = {
         // theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `static/images/world-tree-thumbnail.jpg`, // This path is relative to the root of the site.
+        cache_busting_mode: `none`,
       },
     },
     {
     resolve: `gatsby-plugin-offline`,
     options: {
       precachePages: [`/about/`, `/maths/*`],
+      workboxConfig: {
+         globPatterns: ['**/icon-path*']
+      }
     },
     },
   ],

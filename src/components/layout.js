@@ -15,7 +15,6 @@ const Layout = ({location, pageTitle, children }) => {
             }
               }
   `)
-  console.log(location.pathname)
   return (
       <div className={`${baseStyles.container} global-wrapper`} data-is-root-path={isRootPath}>
         
