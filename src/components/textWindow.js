@@ -11,7 +11,8 @@ const TextWindow = ({ buttonText, children }) => {
         flag === false? setFlag(true):setFlag(false)
         flag === true?setDisplay(`${Styles.contentActive}`):setDisplay("")
         setBody(flag===true?`${Styles.active}`:"")
-    }}>{buttonText}</button>
+    }}>{buttonText}
+    </button>
     <div className={`${Styles.content} ${display}`}>{children}</div>
     </>
     )

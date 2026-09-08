@@ -52,10 +52,10 @@
   --fontSize-5: 2.074rem;
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
-  --color-primary: #005b99;
-  --color-text: #2e353f;
+  --color-primary: rgb(23, 117, 14);
+  --color-text: rgb(232, 214, 163);
   --color-text-light: #4f5969;
-  --color-heading: #1a202c;
+  --color-heading: rgb(249, 225, 159);
   --color-heading-black: black;
   --color-accent: #d1dce5;
 }
@@ -79,6 +79,8 @@ body {
   font-family: var(--font-body);
   font-size: var(--fontSize-1);
   color: var(--color-text);
+  background:#80461b;
+  padding: 0 175px 0 110px;  
 }
 
 footer {
@@ -100,8 +102,8 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  margin-top: var(--spacing-12);
-  margin-bottom: var(--spacing-6);
+  margin-top: var(--spacing-6);
+  margin-bottom: var(--spacing-3);
   line-height: var(--lineHeight-tight);
   letter-spacing: -0.025em;
 }
@@ -118,7 +120,7 @@ h6 {
 h1 {
   font-weight: var(--fontWeight-black);
   font-size: var(--fontSize-6);
-  color: var(--color-heading-black);
+  color: var(--color-heading);
 }
 
 h2 {
@@ -170,19 +172,19 @@ ol {
   margin-left: var(--spacing-0);
   margin-right: var(--spacing-0);
   padding: var(--spacing-0);
-  margin-bottom: var(--spacing-8);
-  list-style-position: outside;
+  margin-bottom: var(--spacing-0);
+  list-style-position: inside;
   list-style-image: none;
 }
 
 ul li,
 ol li {
   padding-left: var(--spacing-0);
-  margin-bottom: calc(var(--spacing-8) / 2);
+  margin-bottom: calc(var(--spacing-0) / 2);
 }
 
 li > p {
-  margin-bottom: calc(var(--spacing-8) / 2);
+  margin-bottom: calc(var(--spacing-0) / 2);
 }
 
 li *:last-child {
@@ -245,11 +247,11 @@ a:focus {
 }
 
 .global-wrapper[data-is-root-path="true"] .bio {
-  margin-bottom: var(--spacing-20);
+  margin-bottom: var(--spacing-6);
 }
 
 .global-header {
-  margin-bottom: var(--spacing-12);
+  margin-bottom: var(--spacing-6);
 }
 
 .main-heading {
@@ -277,6 +279,12 @@ a:focus {
   margin-bottom: var(--spacing-4);
 }
 
+.text-in-box {
+  background-color: rgb(234, 223, 192);
+  font-size:small;
+  padding:0.2rem 5px 1rem 3px;
+}
+
 .header-link-home {
   font-weight: var(--fontWeight-bold);
   font-family: var(--font-heading);
@@ -298,19 +306,6 @@ a:focus {
   margin-bottom: var(--spacing-0);
   min-width: 50px;
   border-radius: 100%;
-}
-
-.blog-post header h1 {
-  margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
-}
-
-.blog-post header p {
-  font-size: var(--fontSize-2);
-  font-family: var(--font-heading);
-}
-
-.blog-post-nav ul {
-  margin: var(--spacing-0);
 }
 
 .gatsby-highlight {

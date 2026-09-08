@@ -15,7 +15,7 @@ const MathsBlog = ({location, data}) => {
             {
                 data.allMdx.nodes.map((node) => (
                     <article key={node.id}>
-                        <h2><Link to={`./${node.frontmatter.slug}`}>{node.frontmatter.title}</Link></h2>
+                        <h3><Link to={`./${node.frontmatter.slug}`}>{node.frontmatter.title}</Link></h3>
                         <p>Posted: {node.frontmatter.date} | Updated: {node.parent.modifiedTime}</p>
                     </article>
                 ))

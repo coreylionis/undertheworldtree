@@ -128,12 +128,12 @@ const config = {
         name: `Corey Lionis Personal Site`,
         short_name: `undertheworldtree`,
         start_url: `/`,
-        background_color: `#663399`,
+        background_color: `#80461b`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `static/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `static/images/world-tree-thumbnail.jpg`, // This path is relative to the root of the site.
       },
     },
     {

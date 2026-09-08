@@ -99,9 +99,7 @@ export async function createPages ({ graphql, actions, reporter }) {
   }
 
   const personalMathNodes = result.data.personal.nodes
-  //console.log(JSON.stringify(personalMathNodes))
   const mathsTalkNodes = result.data.mathsTalks.nodes
-  //console.log(JSON.stringify(mathTalkNodes)) 
   const mathsBlogNodes = result.data.mathsBlogs.nodes
   const mathsNotesNodes = result.data.mathsNotes.nodes
   for (let i=1; i < mathsNotesNodes.length; i++) {
