@@ -11,7 +11,7 @@ const IndexPage = ({location}) => {
   return (
     <Layout location={location} pageTitle="Home Page">
       <p>This is the home page of Under the World Tree, the personal site/blog of Corey Lionis.</p>
-      <div style={{width:"40vw", height:"25vw", overflow: "hidden"}}><StaticImage src="../../static/images/PixCropped.jpg" alt="The boy who started it all." aspectRatio="16/9"/></div>
+      <div style={{width:"40vw", height:"25vw", overflow: "hidden"}}><StaticImage src="../images/PixCropped.jpg" alt="The boy who started it all." aspectRatio="16/9"/></div>
   </Layout>
   )
 }
