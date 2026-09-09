@@ -133,17 +133,18 @@ const config = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `static/images/world-tree-thumbnail.jpg`, // This path is relative to the root of the site.
+        icon: `static/images/world-tree-thumbnail.jpeg`, // This path is relative to the root of the site.
         cache_busting_mode: `none`,
       },
     },
+    // add workboxConfig: {
+    //     globPatterns: ['**/icon-path*']
+    //  } to offline in case of icon caching issues 
+    // 
     {
     resolve: `gatsby-plugin-offline`,
     options: {
       precachePages: [`/about/`, `/maths/*`],
-      workboxConfig: {
-         globPatterns: ['**/icon-path*']
-      }
     },
     },
   ],
