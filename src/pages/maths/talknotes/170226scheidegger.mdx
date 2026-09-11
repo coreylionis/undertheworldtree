@@ -7,6 +7,8 @@ tags: [talk, notes, public]
 author: Corey
 slug: "ellipticfibsscheidegger"
 ---
+import * as images from "../../../images/scheidegger"
+
 ### Introduction
 In mirror symmetry, one of the ways we approach the motivating conjectures (homological projective duality and general existence of mirrors for Calabi-Yau threefolds) is by collecting evidence, ie writing down invariants of Calabi-Yaus and their mirrors and finding different ways to calculate and compare them. For $X$ a simply connected Calabi-Yau threefold, there are a few types of invariants we are interested in: 
 	- Diffeomorphism invariants 
@@ -82,7 +84,15 @@ Let $A$ be a $(2r+1)$-dimensional square matrix, skew-symmetric with entries in 
 
 #### Homological projective duality for elliptic normal curves in degree 
 Let $V$ be a 5-dimensional complex vector space, $L \subseteq \bigwedge^2 V^\vee$ a 5-dimensional subspace, $L^\perp$ its orthogonal complement. Then we have a diamond
-![Inclusions in elliptic normal curve projective duality](../../../images/ellfibdiag1.png) of inclusions with $X_0$ our elliptically fibred surface (<span style={{color: 'darkgray'}}>I think </span>), the Plücker embedding from the Grassmannian and the induced map of projective spaces from the inclusion $L^\perp \subseteq \bigwedge^2 V$. The dual picture is the diamond ![Duality diagram for Grassmannian and elliptic curve](../../../images/ellfibdiag2.png), and we find that $\text{Pf}(2, V^\vee)$ is dual to the Grassmannian and that $\mathsf{D}^{\flat}(\text{Coh}(X_{0})) \cong \mathsf{D}^{\flat}(\text{Coh}(Y_{0})).$
+<div className="imgbox" style={{height: "35vh"}}>
+<img src={images.normalCurveDuality} alt="Inclusions in elliptic normal curve projective duality"/>
+</div>
+of inclusions with $X_0$ our elliptically fibred surface (<span style={{color: 'darkgray'}}>I think </span>), the Plücker embedding from the Grassmannian and the induced map of projective spaces from the inclusion $L^\perp \subseteq \bigwedge^2 V$. The dual picture is the diamond 
+<div className="imgbox textimg" style={{height:"35vh"}}> 
+    <div style={{flex: 2, scale: "80%"}}><img src={images.grassmannianDuality} alt="Duality diagram for Grassmannian and elliptic curve"/></div>
+    <span style={{flex: 1}}>,</span>
+</div>
+and we find that $\text{Pf}(2, V^\vee)$ is dual to the Grassmannian, $\mathsf{D}^{\flat}(\text{Coh}(X_{0})) \cong \mathsf{D}^{\flat}(\text{Coh}(Y_{0})).$
 
 In the GLSM version of this homological duality setup (see [Hori Knapp '13](https://arxiv.org/pdf/1308.6265)), $G = U(2)$ with stringy Kähler space $\mathcal{M}_{K} = \mathbb{C}^* / e^{-t}$, $e^{-t} = \frac{1}{2}(11 \pm 5\sqrt{5})$. The Higgs branch is $Y_0$.
 
@@ -103,7 +113,7 @@ The correct setting for an elliptic fibration is a flat proper holomorphic surje
 
 ### Open Questions 
 ( <span style={{color: "darkgray"}}>this summary should be close to correct but I'm kind of guessing what the notation means</span>) In general, we so far usually have a picture as below: We have a mirror space $Y$ and an analytic non-Kähler resolution $\overline{Y}$, but we can get an associated algebro-geometric space by taking the noncommutative space associated to a nonzero element $\alpha \in \text{Br}(Y)$ which will have $\mathsf{D}^{\flat}(\text{Coh}(\overline{Y})) \cong \mathsf{D}^{\flat}(\text{Coh}(Y_{\text{nc}, \alpha}))$. Then we can pass to a smooth deformation $Y'$ of $\overline{Y}$. The correct and precise version of this is in [Thomas Calabrese '16](https://arxiv.org/pdf/1408.4063).
-![Sketch of the mirror setting](../../../images/variousmirrors.png)
+<div className="imgbox" style={{height: "20vh"}}><img src={images.variousMirrors} alt="Sketch of relations between spaces appearing in the mirror setting" /></div>
 
 The things we want to know are: 
 - What are the bounded derived categories of singular elliptic fibrations?

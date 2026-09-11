@@ -7,7 +7,7 @@ tags: [talk, notes, public]
 author: Corey
 slug: "coherencelior"
 ---
-import { StaticImage } from "gatsby-plugin-image"
+import * as images from "../../../images/liorcoherence"
 
 ### Goal 
 A setting where we can do homotopy theory with monoids within a category. 
@@ -15,15 +15,19 @@ A setting where we can do homotopy theory with monoids within a category.
 	- Monoids in the homotopy category of $\mathsf{Top}$ are too loose.
 
 A middle ground is the category of **homotopy coherent** monoids, tensor categories with commuting Stasheff pentagons and higher diagrams:
-<div style={{scale: "90%"}}>![The Stasheff associativity pentagon, a low-order coherence diagram.](../../../images/pentagon.png)</div>
+<div className="imgbox" style={{height: "30vh"}}>
+<img src={images.pentagon} alt={"The Stasheff associativity pentagon, a low-order coherence diagram."} />
+</div>
 
 ### Framing associativity as a coherence problem 
 For a homotopy theorist, associativity of multiplication for a monoid $M$ is connected to existence of extensions fitting in a diagram
-<div style={{scale: "120%"}}>![Monoid coherence diagram](../../../images/first-assoc.png)</div>
+<div className="imgbox" style={{height: "20vh"}}>
+<img src={images.htpyAssoc} alt={"Monoid coherence diagram"} />
+</div>
 (using the appropriate sphere/disk objects in the category, eg coming from initial/terminal objects and categorical constructions).
 More generally, we have a family of extension problems 
-<div style={{display:"flex", flexDirection: "row", flexWrap:"nowrap", gap:"0rem", justifyContent:"center", alignItems:"center"}}> 
-    <div style={{ scale: "100%", flex: 2}}>![Extension problems picture](../../../images/extensions.png)</div>
+<div className="imgbox textimg" style={{height:"20vh"}}> 
+    <div style={{ scale: "100%", flex: 2}}><img src={images.extensions} alt="Extension problems picture" /></div>
     <span style={{flex: 1}}>,</span>
 </div>
 
@@ -45,7 +49,7 @@ X\otimes (Y \otimes Z) \simeq (X \otimes Y) \otimes Z
 $$ 
 up to isomorphism, together with higher coherence of the isomorphisms (Stasheff pentagon is used as an associator and implies higher diagrams). These coherences can be thought as belonging to the subcategory consisting of objects and invertible morphisms (so there is a groupoid perspective on this).
 
-- Recall that we have functors <div style={{ scale: "40%", verticalAlign: "right", height:"26vh"}}>![Fund groupoid geometric realisation adjunction](../../../images/gpd.png)</div>
+- Recall that we have functors <div className="imgbox" style={{ scale: "100%", verticalAlign: "right", height:"26vh"}}><img src={images.gpd} alt="The adjunction between the fundamental groupoid and geometric realisation functors" /></div>
 taking the fundamental groupoid in one direction and the geometric realisation in the other. For example, the geometric realisation of the *classifying groupoid* $\mathbb{B}G$ (category with one object and $G$ as its group of automorphisms) is the **classifying space** $|\mathbb{B}G| = BG$. Applying the geometric realisation construction to the category $\mathsf{Fin}^{\simeq}$ of finite sets up to isomorphism (objects: one for each natural number $n$, no morphisms between different sets and $\text{Hom}(n,n) = \Sigma_{n}$ the symmetric group on $n$ elements) gives 
 $$
 |\mathsf{Fin}^{\simeq}| = \coprod_{n \in \mathbb{N}} B\Sigma_{n} =: \mathbb{M},
@@ -55,8 +59,8 @@ $$
 \mathbb{S} = \varinjlim (\mathbb{S}^0 \to \Omega \mathbb{S}^1 \to \Omega^2 \mathbb{S}^2 \to \dots),
 $$ 
 in the sense that we have a diagram 
-<div style={{display:"flex", flexDirection: "row", flexWrap:"nowrap", gap:"0rem", padding:"0rem", justifyContent:"center", alignItems:"center", height:"20vh"}}> 
-    <div style={{ scale:"50%", flex: 2}}>![Universal monoid sphere spectrum diagram](../../../images/m-to-s.png)</div>
+<div className="imgbox textimg" style={{height:"20vh"}}> 
+    <div style={{flex: 2, scale: "70%"}}><img src={images.mToS}alt="Universal monoid sphere spectrum diagram" /> </div>
     <span style={{flex: 1}}>.</span>
 </div>
 Of course, for this to be the right choice of completion we need more than just the same underlying monoid as the group completion, but <span style={{color:"darkgray"}}>I didn't catch this detail in the talk</span>. For one hint in this direction, recall that by the Freudenthal suspension theorem, the sequence 
@@ -86,14 +90,17 @@ using the action of $\Sigma_{n}$ on $X^{\otimes n}$, and often we can also form 
 <u>Remark</u>: The group completion of $\left( \coprod_{n \in \mathbb{N}} B\mathrm{GL}_{n}(\mathbb{C}), \oplus \right)$ in the category of spectra is an object usually denoted by $ku$, the spectrum of **topological complex K-theory**. The name comes from the fact that for a compact object $X$ in the category, $K_{0}(X) = [X, ku],$ the maps from $X$ to $ku$. With the tensor product $\otimes$ of complex vector space, $ku$ comes equipped with hc commutative ring structure. 
 
 <u>Example - Power Elements</u> Let $R$ be any commutative ring spectrum (in the topological sense, so we have an infinite suspension diagram of rings). Then an element $x \in R$ can be thought of as an arrow in a diagram of hc objects 
-<div style={{display:"flex", flexDirection: "row", flexWrap:"nowrap", gap:"0rem", padding:"0rem", alignItems:"center", height:"20vh"}}>
-<div style={{scale:"40%", flex:2}}>![Diagram of power operations](../../../images/power-operations.png)</div>
+<div className="imgbox textimg" style={{height:"20vh"}}>
+<div style={{scale:"60%", flex:2}}><img src={images.powerOps} alt="Diagram of power operations"/></div>
 <span style={{flex:1}}>.</span> 
 </div>
 Since $\mathbb{M} = \coprod_{n \in \mathbb{N}} B\Sigma_{n}$ we have maps from the point to each one-point space $B\Sigma_{n}$. Now a map $B\Sigma_{n} \to R$ picks out an element $x^n \in R^{B\Sigma_{n}}$ the hc ring of all objects with automorphism group $\Sigma_{n}$ (identified with $\mathsf{Map}(B\Sigma_{n}, R)$), and we have $\pi_{0}(R^{B\Sigma_{n}}) = R^0(B\Sigma_{n}),$ where $R^0 = \pi_{0}(R)$ (so the RHS is the ordinary points of the ordinary ring $R$ which have $\Sigma_{n}$-automorphisms). Coherence is equivalent to the statement that the diagram 
-<div style={{scale:"35%", height:"25vh"}}>![Coherence for power operations](../../../images/coherence.png)</div> commutes, 
+<div className="imgbox textimg" style={{height:"25vh"}}>
+<img src={images.coherence} alt="Coherence for power operations" style={{flex:2, scale:"60%"}}/><span style={{flex: 1}}>commutes,</span>
+</div>
+
 where the object on the bottom is the quotient groupoid (every object of $R^n$ has $\Sigma_{n}$-automorphisms). 
-Now since we have an arrow $\alpha: R^0(\mathbb{M}) \to R^0$ as above, we get **power elements** $\alpha(x^m) \in R$ for all $m$ from our original diagram. (<span style={{color: 'darkgray'}}>This is probably only partially correct, I am missing definitions and details to make this precise</span>) <span style={{color: 'blue'}}>I think we want this to explain the power elements/formal group laws of Lubin, Lurie et al </span> 
+Now since we have an arrow $\alpha: R^0(\mathbb{M}) \to R^0$ as above, we get **power elements** $\alpha(x^m) \in R$ for all $m$ from our original diagram. (<span style={{color: 'darkgray'}}>This is probably only partially correct, I am missing definitions and details to make this precise</span>) <span style={{color: 'var(--color-md-comments)'}}>I think we want this to explain the power elements/formal group laws of Lubin, Lurie et al </span> 
 
 - There is a *Thom spectrum* $MO$ such that $\pi_{n}(MO)$ is the category of stably framed smooth $n$-manifolds up to cobordism, and $[X, MO]$ gives *cobordism cohomology* for a topological space $X$. 
 - The *Morava E-theories* form a sequence of commutative ring spectra, with 
@@ -119,7 +126,7 @@ $$
 - For every $n$-finite space $\mathcal{A}$, the left Kan extension $\int_{\mathcal{A}}: X^\mathcal{A} \to X$ exists
 - There is homotopy-coherent associativity and a homotopy-coherent unit
 - Analogous to taking the orbits of the induced representation, we have a commuting diagram 
-<div style={{scale:"80%"}}>![Kan extension and invariants](../../../images/groups-diagram.png)</div>
+<div className="imgbox" style={{height:"30vh"}}><img src={images.kanInvariants} alt="Diagram of Kan extension and invariants functor giving a categorical 'induced representation'." /></div>
 
 <u>Example</u>: If $X = \mathbb{Q}$ (more generally, any divisible commutative monoid) and we have a constant map $BG \xrightarrow{f} \mathbb{Q}$, the left Kan extension is $\int_{BG}f = \frac{1}{|G|}f(x)$. So we see that the extension is providing a generalisation of 'averaging over $G$'.
 
@@ -135,7 +142,7 @@ via the canonical morphism $X_{1} \cup \dots \cup X_{n} \to X_{1} \times \dots \
 $$
 \varinjlim_{A} \ X \cong \varprojlim_{A} \ X.
 $$
-If $X, Y \in \mathscr{C}$ are $0$-semiadditive, $f, \, g : X \to Y$ we can construct the diagram <div scale="95%">![Homotopy-coherent addition](../../../images/additivity.png)</div> recovering and generalising addition to the homotopy-coherent setting\! 
+If $X, Y \in \mathscr{C}$ are $0$-semiadditive, $f, \, g : X \to Y$ we can construct the diagram <div className="imgbox" style={{scale:"90%", height:"25vh"}}><img src={images.additivity}alt="Homotopy-coherent addition" /></div> recovering and generalising addition to the homotopy-coherent setting\! 
 
 **Theorem**: If $\mathscr{C}$ is $n$-semiadditive for all $X, Y \in \mathscr{C}$, $\text{Map}_{\mathscr{C}}(X,Y)$ has a canonical $n$-commutative monoid structure. 
 

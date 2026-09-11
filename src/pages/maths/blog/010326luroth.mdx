@@ -6,6 +6,7 @@ tags: [blog, public]
 author: Corey
 slug: "luroth"
 ---
+import factoredCurves from "../../../images/factored-curves.png" 
 
 Over the last few days I've been learning some machinery used to analyse $\mathbb{G}_{m}$-actions in algebraic geometry. One of the results I've needed for this is Lüroth's theorem. In this write-up I will follow the proof given in Hartshorne, which makes the geometric content of the statement clear and establishes theory about morphisms of curves along the way. This is a favourite theme in my recent work - analysis of field extensions usually provides strong information about morphisms of varieties. I especially enjoy results in the characteristic $p$ case; the field theory developed on its own can feel overly complicated. 
 
@@ -19,8 +20,11 @@ $$
 $$
 where $R = \sum_{p \in X} \text{length}(\Omega_{X/Y, \ p}) p$ is the **ramification divisor** and $g(X)$ is the (geometric) genus. 
 
-If $f: X \to Y$ is a finite morphism of curves, then $K(X)/K(Y)$ is a finite extension and there is a subfield $L$ of $K(X)$ such that $K(X)/L$ is purely inseparable and $L/K(Y)$ is separable. By the equivalence of categories between fields of transcendence degree one and function fields of curves, to $L$ corresponds a curve $Z$ for which we have a factorisation .
-![Composition of curve maps](../../../images/factored_curves.png)
+If $f: X \to Y$ is a finite morphism of curves, then $K(X)/K(Y)$ is a finite extension and there is a subfield $L$ of $K(X)$ such that $K(X)/L$ is purely inseparable and $L/K(Y)$ is separable. By the equivalence of categories between fields of transcendence degree one and function fields of curves, to $L$ corresponds a curve $Z$ for which we have a factorisation 
+<div className="imgbox textimg" style={{height: "15vh"}}>
+<div style={{flex: 2, scale:"70%", textAlign: "right"}}><img src={factoredCurves} alt="Composition of curve maps" /></div>
+<span style={{flex: 1}}>.</span>
+</div>
 We can use Hurwitz to study the separable part, so we are left to analyse the purely inseparable part $X \xrightarrow{g} Z$ (recall that inseparability is a characteristic $p$ phenomenon, so we can assume $X$ is defined over $\mathbb{Z}_{p}$ for some prime $p$).
 
 **Definition**: Let $X$ be a scheme with local rings of characteristic $p$. The **Frobenius morphism** $F: X \to X$ is defined to be the identity map on the topological space of $X$, with corresponding sheaf morphism $F^{\#} : \mathcal{O}_{X} \to \mathcal{O}_{X}$ the $p$th power map. 

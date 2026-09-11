@@ -58,6 +58,7 @@
   --color-heading: rgb(249, 225, 159);
   --color-heading-black: black;
   --color-accent: #d1dce5;
+  --color-md-comments: rgb(160, 236, 45);
 }
 
 /* HTML elements */
@@ -226,9 +227,10 @@ table thead tr th {
 }
 
 /* Link */
-
+/* It's poor practice to have undecorated links unless the link color etc is reserved. Keep in mind for future changes.*/
 a {
   color: var(--color-primary);
+  text-decoration: none;
 }
 
 a:hover,
@@ -237,6 +239,32 @@ a:focus {
 }
 
 /* Custom classes */
+
+.imgbox {
+  width: 40vw; 
+  height: 50vh; 
+  text-align:center; 
+  margin-bottom: 1rem;
+}
+
+.imgbox img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.textimg {
+  display:flex; 
+  flex-direction: row;
+  flex-wrap: nowrap; 
+  gap: 0rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.textimg span {
+  text-align: left;
+}
 
 .global-wrapper {
   margin: var(--spacing-0) auto;
