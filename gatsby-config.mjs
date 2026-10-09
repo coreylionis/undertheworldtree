@@ -45,15 +45,21 @@ const config = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.md`, `.mdx`],
-        gatsbyRemarkPlugins: [`gatsby-remark-katex`, {
+        gatsbyRemarkPlugins: [
+          {
+            resolve:`gatsby-remark-katex`,
+            options: {macros: {"\\frr": "\\mathfrak", "\\bb": "\\mathbb", "\\cal": "\\mathcal", "\\eps": "\\varepsilon"} }
+          }, 
+          {
           resolve: `gatsby-remark-images`, 
           options: {
             maxWidth: 630,
             loading: "eager",
           }
-        }],
+        }
+      ],
         mdxOptions: {
-          remarkPlugins: [
+           remarkPlugins: [
             require(`remark-math`),
           ],
           rehypePlugins: [
@@ -62,6 +68,12 @@ const config = {
         },
       }
     },
+    /*Other math gadgets for mdx: remarkPlugins: [
+            require(`remark-math`),
+          ],
+          rehypePlugins: [
+            require(`rehype-katex`)
+          ],*/ 
     {
       resolve: `gatsby-transformer-remark`,
       options: {

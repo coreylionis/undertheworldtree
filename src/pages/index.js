@@ -3,9 +3,6 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { StaticImage } from "gatsby-plugin-image"
 
-
-/* import AboutContent from "../components/aboutContent"  to put eg the about page text heree*/
-
 // creates IndexPage component
 const IndexPage = ({location}) => {
   return (

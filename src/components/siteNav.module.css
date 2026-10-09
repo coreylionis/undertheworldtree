@@ -1,0 +1,52 @@
+.grenze-gotisch {
+  font-family: "Grenze Gotisch Variable", serif;
+  font-optical-sizing: auto;
+  font-size:min(7vw, 4.2rem);
+  color: var(--color-title);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.banner {
+  height:clamp(70px,15vw,145px);
+  width:clamp(122px,40vw,515px);
+  margin-right:1rem;
+  overflow:hidden;
+}
+
+.banner img {
+  max-width:100%;
+  max-height:100%;
+  object-fit:cover;
+}
+
+.navbar {
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding-left: 2rem;
+    gap: 1rem;
+    justify-content:flex-end;
+}
+
+.nav-link-item {
+  font-size: clamp(0.8*var(--base-font-size), 1.5vw, 1.05*var(--base-font-size));
+}
+
+.nav-link-item:hover {
+    background-color: rgb(113, 172, 108);
+}
+
+.nav-link-item.active {
+    background-color: rgb(113, 172, 108);
+}
+
+.nav-link-text {
+    color: var(--color-links);
+    text-decoration: none;
+}

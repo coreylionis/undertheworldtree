@@ -7,6 +7,7 @@
     "url": "https://github.com/coreylionis/undertheworldtree/issues"
   },
   "dependencies": {
+    "@fontsource-variable/grenze-gotisch": "^5.3.0",
     "@fontsource-variable/montserrat": "^5.0.17",
     "@fontsource/merriweather": "^5.0.8",
     "dompurify": "^3.4.14",
@@ -54,7 +55,7 @@
     "start": "gatsby develop -o",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "test": "echo \"Write tests!\" && exit 1",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public -c CNAME"
   },
   "allowScripts": {
