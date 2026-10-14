@@ -6,8 +6,9 @@ tags: [blog, public]
 author: Corey
 slug: "defcompletion"
 ---
-
+{/* excerpt start */}
 Today I would like to discuss the proof that if $R$ is a local ring with residue field $k$, the functors $h_R$ and $h_{\hat{R}}$ are isomorphic, where $h_S : \mathsf{Art}/k \to \mathsf{Set}, h_{S}(A) = \text{Hom}_{k}(S, A)$ is the functor sending an artinian local ring with residue field $k$ to the set of maps into it from $S$. We will see that this boils down to the fact that artinian local rings are complete (I will not prove it this way, but trust that readers can see the underlying idea), but I would also like to talk about identifying this as the correct deformation functor. 
+{/* excerpt end */}
 
 On the one hand, $h_{S}$ is an obvious choice since it's the restriction of the contravariant representing functor for $\text{Spec} \ S$ to $\mathsf{Art}/k$, which we use because the category of schemes has fibre products. On the other, the completion $\hat{R}$ is universally mapped *into*, so the functor $h^{S}(A) = \text{Hom}_{k}(A, S)$ might seem more appropriate. Let's see what happens if we expand the universal property. Working with our local ring $R$, for $A$ Artin we have $$h^{\hat{R}}(A) = \text{Hom}_{k}(A, \hat{R}) = \text{Hom}_{k}(A, \varprojlim_{n} \ R/\mathfrak{m}_{R}^n) = \varprojlim_{n} \ \text{Hom}_{k}(A, R/\mathfrak{m}_{R}^n),$$
 but nilpotence of the maximal ideal in $A$ does not allow us to relate back to $R$ since it does not furnish us with a choice of element in $R$ corresponding to the image of an element in $A$ (reason: two elements of $R$ can correspond to the same sequence in $\hat{R}$; their difference lives in $\cap_{n \geq 0}\mathfrak{m}_{R}^n$, so when this ideal is nonzero we have no preferred choice of class representative). So we see that our proposition is unlikely to hold if we use the $h^R$ functors without assuming $R$ itself is Artin (this would make $\cap_{n \geq 0}\mathfrak{m}_{R}^n = 0$). Local rings with fixed residue field arise naturally in geometry but artinian rings appear in more specialised contexts, so we see that the contravariant hom-functor-functor is not ideal for deformations.

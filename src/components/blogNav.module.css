@@ -1,0 +1,11 @@
+.blog-post-nav {
+    display: flex; 
+    flex-direction:row;
+    justify-content: space-evenly;
+    list-style: none;
+    padding: 0
+}
+
+.blog-post-nav a {
+    color: var(--color-links-internal);
+}

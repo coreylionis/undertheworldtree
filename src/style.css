@@ -12,7 +12,7 @@
     BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
-  --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
+  --fontFamily-serif: "Georgia", Cambria, "Times New Roman",
     Times, serif;
   --font-body: var(--fontFamily-serif);
   --font-heading: var(--fontFamily-sans);
@@ -30,7 +30,8 @@
   --color-text-bg: #80461b;
   --color-site-bg: rgb(127,185,228);
   --color-title: rgb(165,221,50);
-  --color-links: rgb(81,219,210);
+  --color-links-internal: rgb(81,219,210);
+  --color-links-external: rgb(238,182,254);
   --color-text: rgb(232, 214, 163);
 
   --color-text-light: #4f5969;
@@ -107,14 +108,17 @@ h2 {
 
 h3 {
   font-size: calc(var(--base-font-size)*pow(var(--scaling-factor), 3));
+  margin-bottom: calc(var(--scaling-factor)*1.5);
 }
 
 h4 {
   font-size: calc(var(--base-font-size)*pow(var(--scaling-factor), 2));
+  margin-bottom: var(--scaling-factor);
 }
 
 h5 {
   font-size: calc(var(--base-font-size)*var(--scaling-factor));
+  margin-bottom: calc(var(--scaling-factor)*0.5);
 }
 
 h6 {
@@ -149,7 +153,7 @@ ul,
 ol {
   margin-top: 0;
   margin-bottom: calc(var(--base-spacing)*3);
-  padding-left: calc(var(--base-spacing)*6);
+  padding-left: calc(var(--base-spacing)*3);
   list-style-position: inside;
   list-style-image: none;
 }
@@ -206,7 +210,7 @@ table thead tr th {
 /* Link */
 /* It's poor practice to have undecorated links unless the link color etc is reserved. Keep in mind for future changes.*/
 a {
-  color: var(--color-links);
+  color: var(--color-links-external);
   text-decoration: none;
 }
 
@@ -218,13 +222,6 @@ a:focus {
 /* Custom classes */
 
 .imgbox {
-  width: 40vw; 
-  height: 50vh; 
-  text-align:center; 
-  margin-bottom: 1rem;
-}
-
-.imgbox-new {
   overflow: hidden;
   width: clamp(25ch, 20vw, 80ch);
 }
@@ -232,7 +229,7 @@ a:focus {
 .imgbox img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .textimg {
@@ -258,17 +255,36 @@ a:focus {
 }
 
 @media (max-width: 672px) {
-  .textimg-grid {
+  .ybdisplay {
     grid-template-rows: 2fr 1fr 2fr;
     grid-auto-rows: minmax(100px, 250px);
+  }
+
+  .about-wrapper {
+    grid-template-rows: 1fr 1fr;
+    grid-auto-rows: minmax(100px, 350px)
   }
 }
 
 @media (min-width: 673px) {
-  .textimg-grid {
+  .ybdisplay {
     grid-template-columns: 2fr 1fr 2fr;
     grid-auto-columns: minmax(100px, 250px);
   }
+
+  .about-wrapper {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-columns: minmax(100px, 350px)
+  }
+}
+
+.about-wrapper p,
+.about-wrapper span {
+  width: clamp(var(--min-prose-line-width), 25vw, 38ch);
+}
+
+.about-left {
+  margin-right: 1vw;
 }
 
 /* styles for the global wrapper */
@@ -316,7 +332,8 @@ a:focus {
 .text-in-box {
   background-color: rgb(234, 223, 192);
   font-size:small;
-  padding:0.2rem 5px 1rem 3px;
+  border-radius:5px;
+  padding:0.2rem 5vw 1rem 3px;
 }
 
 .header-link-home {
@@ -345,16 +362,3 @@ a:focus {
 .gatsby-highlight {
   margin-bottom: calc(var(--base-spacing)*8);
 }
-
-/* Media queries */
-
-/*@media (max-width: 42rem) {
-  blockquote {
-    padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-4);
-    margin-left: var(--spacing-0);
-  }
-  ul,
-  ol {
-    list-style-position: inside;
-  }
-}*/

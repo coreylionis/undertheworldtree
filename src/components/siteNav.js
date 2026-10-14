@@ -9,7 +9,7 @@ const SiteNav = ({location, title }) => {
     <>
         <header className={Styles.navbar}>
           <div className={Styles.banner} style={{flex:2}}><img src={banner} /></div>
-          <Link to= "/" style={{textDecoration: 'none'}}><h1 className={Styles.grenzeGotisch} style={{flex:3, textAlign:"left"}}>{title}</h1></Link>
+          <Link to= "/" style={{textDecoration: 'none', flex:3}}><h1 className={Styles.grenzeGotisch} style={{textAlign:"left"}}>{title}</h1></Link>
         </header>
         <nav>
             <ul className={Styles.navLinks}>

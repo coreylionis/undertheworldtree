@@ -1,0 +1,42 @@
+---
+title:  "Introduction to Quantum Groups"
+alttitle: "Quantum Groups"
+date:   2026-10-02
+speaker: "Yaping Yang"  
+tags: [talk, notes, public]
+author: Corey
+slug: "yapingquantum"
+---
+import * as images from "../../../images/yapingquantum";
+
+{/* excerpt start */}
+These notes are from a talk given by Yaping Yang at the University of Melbourne during semester 1, 2026. Her talk was an introduction to the (geometric) representation theory of quantum groups, demonstrating results and definitions for quantum-$\frr{sl}_2$.  
+{/* excerpt end */}
+
+Interest in quantum groups in the 1980s came from the discovery of quantum integrable systems such as the Yang-Baxter equations 
+$$
+R_{23}R_{13}R_{12} = R_{12}R_{13}R_{23}
+$$
+relating maps of vector spaces $R_{ij}: V^{\otimes 2} \to V^{\otimes 2}$. The Yang-Baxter equation can be thought as the algebraic side of the Reidemeister relation
+<div className="textimg-grid ybdisplay"> 
+<div className="imgbox"><img src={images.ybeLeft}alt="Left-hand side of the Yang-Baxter equation braid" /></div>
+<span style={{textAlign:"center", minWidth:"10vw", fontSize: "calc(var(--base-font-size)*pow(var(--scaling-factor), 4))"}}>=</span>
+<div className="imgbox"><img src={images.ybeRight}alt="Right-hand side of the Yang-Baxter equation braid" /></div>
+</div>
+under a topological field theory correspondence. As a result, understanding the algebra of the Yang-Baxter equation translates into topological and geometric data. Drinfeld and Jimbo developed the algebraic formalism unifying these systems by *deforming* the universal enveloping algebra of a semisimple Lie algebra. 
+
+For the Lie algebra $ \frr{g} = \frr{sl}_2 $ and its standard triple of generators 
+$$
+h = \begin{pmatrix}0 & 1 \\ -1 & 0 \end{pmatrix}, \quad e = \begin{pmatrix}0 & 1 \\ 0 & 0 \end{pmatrix}, \quad f = \begin{pmatrix}0 & 0 \\ 1 & 0 \end{pmatrix},
+$$
+the universal enveloping algebra is 
+$$
+\cal{U}(\frr{g}) = \bigl \langle h, e, f \ | \ [h, e] = 2e, [h,f] = -2f, [e, f] = h  \bigr \rangle.
+$$
+The enveloping algebra is a $\bb{C}$-algebra, and $q$-deformation creates a related $\bb{C}(q)$-algebra $U_q(\frr{sl}_2)$ having four generators $E, F, K^{\pm}$ and relations 
+$$
+KEK^{-1} = q^2E, \quad KFK^{-1} = q^{-2}F, \quad [E, F] = \frac{K - K^{-1}}{q - q^{-1}}. 
+$$
+We can specialise parameters to see the relation to $\cal{U}(\frr{sl}_2)$: letting $q = e^{\frac{\hbar}{2}}$, $E = \text{exp}(\frac{\hbar}{2}e)$, $F = \text{exp}(\frac{\hbar}{2}f)$ and $K = \text{exp}(\frac{\hbar}{2}h)$ the corresponding matrix exponentials, taking the limit $\hbar \to 0$ recovers $\frr{sl}_2$. 
+
+The quantum deformation can therefore be thought of as a deformation of $\frr{sl}_2$ in one 'direction'. The general definition for a semisimple Lie algebra/Kac-Moody group can be found [here](https://en.wikipedia.org/wiki/Quantum_group#Drinfeld%E2%80%93Jimbo_type_quantum_groups)....

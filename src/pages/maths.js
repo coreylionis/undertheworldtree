@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Link } from 'gatsby'
-import Layout from "../../components/layout"
-import Seo from "../../components/seo"
+import Layout from "../components/layout"
+import Seo from "../components/seo"
 
 const MathsIndex = ({location}) => {
     return (
@@ -9,8 +9,8 @@ const MathsIndex = ({location}) => {
             <p>This is the landing page for the maths part of my website. My notes, blog posts, seminar pages and other maths resources can be accessed from here! </p>
             <nav>
                     <ul>
-                      <li style={{fontSize: "1.3rem"}}><Link to="./blog" style={{textDecoration: "none"}}>Blog</Link></li>
-                      <li style={{fontSize: "1.3rem"}}><Link to="./notes" style={{textDecoration: "none"}}>Notes</Link></li>
+                      <li style={{fontSize: "1.3rem"}}><Link to="./blog" style={{textDecoration: "none", color:"var(--color-links-internal)"}}>Blog</Link></li>
+                      <li style={{fontSize: "1.3rem"}}><Link to="./notes" style={{textDecoration: "none", color:"var(--color-links-internal)"}}>Notes</Link></li>
                     </ul>
             </nav>
         </Layout>

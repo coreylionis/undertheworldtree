@@ -3,38 +3,21 @@ import { Link, graphql } from 'gatsby'
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Bio from "../components/bio"
-import Mathtext from "../components/mathtext"
 
-const PersonalMathPage = ({ location, data, children }) => {
-    const postData = data.postData
+const PersonalMathPage = ({ location, pageContext, children }) => {
 
     return (
-        //note: layout is overriding styles from Katex for some text. I want to fix this since I often use text regions in my Latex code.
-        
-        <Layout location={location} pageTitle={postData.frontmatter.title}>
+        <Layout location={location} pageTitle={pageContext.title}>
             <article>
-                <p>Latest update was: {postData.parent.modifiedTime}</p>
-                <Mathtext children={children} />
+                <p>Latest update was: {pageContext.dateModified}</p>
+                <main class="math-text">{children}</main>
                 <footer><Bio /></footer>
             </article>
-            <Link to='../'>Back</Link>
+            <Link to='../' style={{color: "var(--color-links-internal)"}}>Back</Link>
         </Layout>
     )
 }
 
-export const Head = ({data: {postData}}) => <Seo title={postData.frontmatter.title} description = {postData.excerpt} />
+export const Head = ({data: {pageContext}}) => <Seo title={pageContext.title} />
 
 export default PersonalMathPage
-
-export const mathPostQuery = graphql`
-    query ($id: String!) {
-        postData: mdx(id: {eq: $id}) {
-            parent {
-                ... on File {
-                    modifiedTime(formatString: "MMMM D, YYYY")
-                }
-            }
-            ...MdxDefaults
-        }
-    }
-`

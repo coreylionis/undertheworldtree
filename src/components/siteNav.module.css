@@ -47,6 +47,6 @@
 }
 
 .nav-link-text {
-    color: var(--color-links);
+    color: var(--color-links-internal);
     text-decoration: none;
 }

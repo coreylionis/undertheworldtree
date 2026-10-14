@@ -6,9 +6,11 @@ tags: [blog, public]
 author: Corey
 slug: "luroth"
 ---
-import factoredCurves from "../../../images/factored-curves.png" 
-
+import factoredCurves from "../../../images/factored-curves.png";
+ 
+{/* excerpt start */}
 Over the last few days I've been learning some machinery used to analyse $\mathbb{G}_{m}$-actions in algebraic geometry. One of the results I've needed for this is Lüroth's theorem. In this write-up I will follow the proof given in Hartshorne, which makes the geometric content of the statement clear and establishes theory about morphisms of curves along the way. This is a favourite theme in my recent work - analysis of field extensions usually provides strong information about morphisms of varieties. I especially enjoy results in the characteristic $p$ case; the field theory developed on its own can feel overly complicated. 
+{/* excerpt end */}
 
 The main result from curve theory we use is Hurwitz's theorem. In this note we will assume all curves are nonsingular projective, and make note if results extend more generally.
 
@@ -69,3 +71,4 @@ Using the formula in the lemma, we have $g(X) = g(Y)$ if and only if $\text{deg}
 **Lüroth's Theorem**: Let $k$ be an algebraically closed field. If $k(t)/k$ is a purely transcendental extension of degree 1, any subfield $L$ is also purely transcendental over $k$. 
 
 **Proof**: Assume that $L \neq k$, so that $L$ has transcendence degree 1. Then $L$ is the function field of a curve, and the extension $k(t)/L$ is finite (or else $k(t)$ would have transcendence degree $\geq 2$) corresponding to a finite morphism $f: \mathbb{P}^1_{k} \to Y$ ($K(Y) = L$).  By the genus inequality $Y$ cannot have genus $g(Y) \geq 1$, so $g(Y) = 0$ and $Y \cong \mathbb{P}^1$. It follows that $Y \cong k(u)$ for some $u$. $\square$
+

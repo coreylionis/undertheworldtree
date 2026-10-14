@@ -5,6 +5,22 @@ import siteUrl from "./defaults.mjs"
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const require = createRequire(import.meta.url)
+export const katexOptions = {delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+macros: {"\\frr": "\\mathfrak", "\\bb": "\\mathbb", "\\cal": "\\mathcal", "\\eps": "\\varepsilon"} };
+const gatsbyMdxOptions = {
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve:`gatsby-remark-katex`,
+            options: katexOptions,
+          }, 
+          {
+          resolve: `gatsby-remark-images`, 
+          options: { maxWidth: 630, loading: "eager",}
+          }
+        ],
+      };
+
 
 /**
  * @type {import('gatsby').GatsbyConfig}
@@ -26,12 +42,11 @@ const config = {
   plugins: [
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name:'pages',
-        path:`${__dirname}/src/pages`,
+        name:'mdx',
+        path:`${__dirname}/src/mdx`,
       },
     },
     {
@@ -43,50 +58,7 @@ const config = {
     },
     {
       resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: [`.md`, `.mdx`],
-        gatsbyRemarkPlugins: [
-          {
-            resolve:`gatsby-remark-katex`,
-            options: {macros: {"\\frr": "\\mathfrak", "\\bb": "\\mathbb", "\\cal": "\\mathcal", "\\eps": "\\varepsilon"} }
-          }, 
-          {
-          resolve: `gatsby-remark-images`, 
-          options: {
-            maxWidth: 630,
-            loading: "eager",
-          }
-        }
-      ],
-        mdxOptions: {
-           remarkPlugins: [
-            require(`remark-math`),
-          ],
-          rehypePlugins: [
-            require(`rehype-katex`)
-          ],
-        },
-      }
-    },
-    /*Other math gadgets for mdx: remarkPlugins: [
-            require(`remark-math`),
-          ],
-          rehypePlugins: [
-            require(`rehype-katex`)
-          ],*/ 
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-          `gatsby-remark-prismjs`,
-        ],
-      },
+      options: gatsbyMdxOptions,
     },
     {
       resolve: `gatsby-plugin-feed`,
@@ -107,7 +79,7 @@ const config = {
             serialize: ({ query: { site, allMdx } }) => {
               return allMdx.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {
-                  description: node.excerpt,
+                  description: node.extract,
                   date: node.frontmatter.date,
                   url: site.siteMetadata.siteurl + node.frontmatter.slug,
                   guid: site.siteMetadata.siteurl + node.frontmatter.slug,
@@ -118,10 +90,10 @@ const config = {
             query: `{
               allMdx(sort: {frontmatter: {date: DESC}}) {
                 nodes {
-                  excerpt(pruneLength:160)
+                  extract
                   body
                   frontmatter {
-                    title
+                    alttitle
                     date
                     slug
                   }
@@ -146,19 +118,12 @@ const config = {
         // theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `static/images/world-tree-thumbnail.jpeg`, // This path is relative to the root of the site.
-        cache_busting_mode: `none`,
       },
     },
     // add workboxConfig: {
     //     globPatterns: ['**/icon-path*']
     //  } to offline in case of icon caching issues 
     // 
-    {
-    resolve: `gatsby-plugin-offline`,
-    options: {
-      precachePages: [`/about/`, `/maths/*`],
-    },
-    },
   ],
 };
 
