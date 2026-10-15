@@ -39,7 +39,7 @@ const Bio = () => {
         alt="Profile picture"
       />
       {author?.name && (
-        <p autocapitalize='false'>
+        <p style={{autoCapitalize: 'false'}}>
           Written by <strong>{author.name}</strong>, denizen of the world-tree hollow.
           {` `}
           {/* <a href={`https://twitter.com/${social?.twitter || ``}`}>

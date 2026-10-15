@@ -15,20 +15,22 @@ A setting where we can do homotopy theory with monoids within a category.
 	- Monoids in the homotopy category of $\mathsf{Top}$ are too loose.
 
 A middle ground is the category of **homotopy coherent** monoids, tensor categories with commuting Stasheff pentagons and higher diagrams:
-<div className="imgbox" style={{height: "30vh"}}>
+<div className="imgbox">
 <img src={images.pentagon} alt={"The Stasheff associativity pentagon, a low-order coherence diagram."} />
 </div>
 
 ### Framing associativity as a coherence problem 
 For a homotopy theorist, associativity of multiplication for a monoid $M$ is connected to existence of extensions fitting in a diagram
-<div className="imgbox" style={{height: "20vh"}}>
+
+<div className="imgbox">
 <img src={images.htpyAssoc} alt={"Monoid coherence diagram"} />
 </div>
+
 (using the appropriate sphere/disk objects in the category, eg coming from initial/terminal objects and categorical constructions).
 More generally, we have a family of extension problems 
 <div className="imgbox textimg" style={{height:"20vh"}}> 
     <div style={{ scale: "100%", flex: 2}}><img src={images.extensions} alt="Extension problems picture" /></div>
-    <span style={{flex: 1}}>,</span>
+    <span style={{flex: 1}}>, </span>
 </div>
 
 and we define a **homotopy coherent monoid** to be a monoid equipped with solutions to these extension problems for all $n$. 
@@ -42,14 +44,19 @@ and we define a **homotopy coherent monoid** to be a monoid equipped with soluti
 (rough statement of) **Theorem:** Homotopy coherent groups correspond bijectively to loop spaces.
 
 Recall that the Eckmann-Hilton argument says that if a space $X = X_0$ is isomorphic to $\Omega^2 X_2$ for some other space $X_2$, $\pi_{2}(X) = \pi_{0}(X_{2})$ is abelian. Since fundamental groups may be interpreted as maps from $\mathbb{S}^n$ into $X$, we see that if there are spaces $X_m$ such that $X = \Omega^m X_m$, the homotopy groups $\pi_m(X)$ will be abelian for $m \geq 2$. Combining with the above theorem, this should imply that homotopy coherent commutative groups correspond to infinite loopspaces.
-<u>Examples</u>: 
-- Let $(\mathscr{C}, \otimes, \mathbb{1})$ be a symmetric monoidal category. Then we usually assume 
+
+
+<u><h5>Examples:</h5></u> 
+
+1.Let $(\mathscr{C}, \otimes, \mathbb{1})$ be a symmetric monoidal category. Then we usually assume 
 $$
 X\otimes (Y \otimes Z) \simeq (X \otimes Y) \otimes Z
 $$ 
 up to isomorphism, together with higher coherence of the isomorphisms (Stasheff pentagon is used as an associator and implies higher diagrams). These coherences can be thought as belonging to the subcategory consisting of objects and invertible morphisms (so there is a groupoid perspective on this).
 
-- Recall that we have functors <div className="imgbox" style={{ scale: "100%", verticalAlign: "right", height:"26vh"}}><img src={images.gpd} alt="The adjunction between the fundamental groupoid and geometric realisation functors" /></div>
+2.Recall that we have functors 
+<div className="imgbox" style={{ scale: "100%", verticalAlign: "right"}}><img src={images.gpd} alt="The adjunction between the fundamental groupoid and geometric realisation functors" />
+</div>
 taking the fundamental groupoid in one direction and the geometric realisation in the other. For example, the geometric realisation of the *classifying groupoid* $\mathbb{B}G$ (category with one object and $G$ as its group of automorphisms) is the **classifying space** $|\mathbb{B}G| = BG$. Applying the geometric realisation construction to the category $\mathsf{Fin}^{\simeq}$ of finite sets up to isomorphism (objects: one for each natural number $n$, no morphisms between different sets and $\text{Hom}(n,n) = \Sigma_{n}$ the symmetric group on $n$ elements) gives 
 $$
 |\mathsf{Fin}^{\simeq}| = \coprod_{n \in \mathbb{N}} B\Sigma_{n} =: \mathbb{M},
@@ -61,7 +68,7 @@ $$
 in the sense that we have a diagram 
 <div className="imgbox textimg" style={{height:"20vh"}}> 
     <div style={{flex: 2, scale: "70%"}}><img src={images.mToS}alt="Universal monoid sphere spectrum diagram" /> </div>
-    <span style={{flex: 1}}>.</span>
+    <span style={{flex: 1}}>. </span>
 </div>
 Of course, for this to be the right choice of completion we need more than just the same underlying monoid as the group completion, but <span style={{color:"darkgray"}}>I didn't catch this detail in the talk</span>. For one hint in this direction, recall that by the Freudenthal suspension theorem, the sequence 
 $$
@@ -83,7 +90,8 @@ S^n[X] = [X^{\otimes n}/\Sigma_{n}] \ (\text{coinvariants})
 $$ 
 using the action of $\Sigma_{n}$ on $X^{\otimes n}$, and often we can also form the **alternating power** operation $\bigwedge\nolimits^{n}[X] = [X^{\otimes n}/ \text{sgn}(\Sigma_{n})]$ (when we have a sign representation). If $\mathscr{C}$ is $\mathbb{C}$-linear, we also get a $\lambda$-ring structure on $K_{0}(\mathscr{C})$. 
 
-<u>Examples</u> 
+
+<u><h5>Examples</h5></u> 
 - Let $\mathscr{C} = \mathsf{Vect}_{\mathbb{C}}^{BG}$ be the category of complex vector bundles with structure group $G$ over a point. Then $K_0(\mathscr{C}) = \mathsf{Rep}(G)$ inherits a $\lambda$-ring structure, from the alternating power operation. 
 - Let $\mathscr{C} = \mathsf{Fin}^{BG}_{\mathbb{C}}$ be the category of all finite sets admitting $G$-actions. Then $K_{0}(\mathscr{C}) = \mathsf{Burn}(G)$ is a ring, called the **Burnside ring** of $G$, with addition given by disjoint union of sets and multiplication by Cartesian product. 
 
@@ -92,21 +100,22 @@ using the action of $\Sigma_{n}$ on $X^{\otimes n}$, and often we can also form 
 <u>Example - Power Elements</u> Let $R$ be any commutative ring spectrum (in the topological sense, so we have an infinite suspension diagram of rings). Then an element $x \in R$ can be thought of as an arrow in a diagram of hc objects 
 <div className="imgbox textimg" style={{height:"20vh"}}>
 <div style={{scale:"60%", flex:2}}><img src={images.powerOps} alt="Diagram of power operations"/></div>
-<span style={{flex:1}}>.</span> 
+<span style={{flex:1}}>. </span> 
 </div>
-Since $\mathbb{M} = \coprod_{n \in \mathbb{N}} B\Sigma_{n}$ we have maps from the point to each one-point space $B\Sigma_{n}$. Now a map $B\Sigma_{n} \to R$ picks out an element $x^n \in R^{B\Sigma_{n}}$ the hc ring of all objects with automorphism group $\Sigma_{n}$ (identified with $\mathsf{Map}(B\Sigma_{n}, R)$), and we have $\pi_{0}(R^{B\Sigma_{n}}) = R^0(B\Sigma_{n}),$ where $R^0 = \pi_{0}(R)$ (so the RHS is the ordinary points of the ordinary ring $R$ which have $\Sigma_{n}$-automorphisms). Coherence is equivalent to the statement that the diagram 
+Since $\mathbb{M} = \coprod_{n \in \mathbb{N}} B\Sigma_{n}$ we have maps from the point to each one-point space $B\Sigma_{n}$. Now a map $B\Sigma_{n} \to R$ picks out an element $x^n \in R^{B\Sigma_{n}}$ the hc ring of all objects with automorphism group $\Sigma_{n}$ (identified with $\mathsf{Map}(B\Sigma_{n}, R)$), and we have $\pi_{0}(R^{B\Sigma_{n}}) = R^0(B\Sigma_{n}),$ where $R^0 = \pi_{0}(R)$ (so the RHS is the ordinary points of the ordinary ring $R$ which have $\Sigma_{n}$-automorphisms). Coherence is equivalent to the statement that the diagram
+
 <div className="imgbox textimg" style={{height:"25vh"}}>
-<img src={images.coherence} alt="Coherence for power operations" style={{flex:2, scale:"60%"}}/><span style={{flex: 1}}>commutes,</span>
+<img src={images.coherence} alt="Coherence for power operations" style={{flex:2, scale:"60%"}}/><span style={{flex: 1}}>commutes, </span>
 </div>
 
 where the object on the bottom is the quotient groupoid (every object of $R^n$ has $\Sigma_{n}$-automorphisms). 
-Now since we have an arrow $\alpha: R^0(\mathbb{M}) \to R^0$ as above, we get **power elements** $\alpha(x^m) \in R$ for all $m$ from our original diagram. (<span style={{color: 'darkgray'}}>This is probably only partially correct, I am missing definitions and details to make this precise</span>) <span style={{color: 'var(--color-md-comments)'}}>I think we want this to explain the power elements/formal group laws of Lubin, Lurie et al </span> 
+Now since we have an arrow $\alpha: R^0(\mathbb{M}) \to R^0$ as above, we get **power elements** $\alpha(x^m) \in R$ for all $m$ from our original diagram. (<span style={{color: 'darkgray'}}>This is probably only partially correct, I am missing definitions and details to make this precise</span>) {/*I think we want this to explain the power elements/formal group laws of Lubin, Lurie et al */}
 
 - There is a *Thom spectrum* $MO$ such that $\pi_{n}(MO)$ is the category of stably framed smooth $n$-manifolds up to cobordism, and $[X, MO]$ gives *cobordism cohomology* for a topological space $X$. 
 - The *Morava E-theories* form a sequence of commutative ring spectra, with 
 	- $E_0 \approx \mathbb{C}$
 	- $E_1 \approx k\hat{u_{p}}$ 
-and higher $E$'s being related to things like Witt vector cohomology. <span style={{color: "darkgray"}}>I think these are used in topology to study torsion phenomena</span>.
+and higher $E$'s being related to things like Witt vector cohomology. {/*I think these are used in topology to study torsion phenomena.*/}
 	
 <u>Example</u>: The Hopf fibration can be constructed by decategorification. In the sphere spectrum, taking $x \in \Omega^2 \mathbb{S}^2$ we have arrows 
 $$
@@ -114,19 +123,26 @@ $$
 $$ 
 (using a $\Sigma_{2}$-action on the product $x\cdot x^{-1}$); the loop corresponds to the Hopf map $\mathbb{S}^1 \to \Omega^2 \mathbb{S}^2$, ie $\mathbb{S}^3 \xrightarrow{\eta} \mathbb{S}^2$.
 
-<u>Orbits</u>: If we have a categorical group action $BG \xrightarrow{Z} \mathscr{C}$ factoring through the one-point space $BG \to \text{pt} \to \mathscr{C}$, then we have $\varinjlim Z = Z//G$, identifying $Z$ with its one-object image. In particular, the limit over $[n] \xrightarrow{\{X_{i}\}_{i \in [n]}} \mathscr{C}$ is given by $\varinjlim_{[n]}X_{i} = X_{1} \cup \dots \cup X_{n}$. 
+<u>Orbits</u>: If we have a categorical group action $BG \xrightarrow{Z} \mathscr{C}$ factoring through the one-point space $BG \to \text{pt} \to \mathscr{C}$, then we have $\varinjlim Z = Z//G$, identifying $Z$ with its one-object image. In particular, the limit over a map $[n] \to \mathscr{C}$ specified by elements $X_i \in \mathsf{Ob}(\mathscr{C}), i \in [n]$ is the coproduct 
+$$
+\varinjlim_{[n]}X_{i} = X_{1} \cup \dots \cup X_{n}.
+$$ 
 
 ### Semiadditivity
+
 **Definition**: A space $X$ is **n-finite** if $\pi_{k}(X, x) = 0$ for all $k > n$ and if all homotopy groups $\pi_k(X, x)$ are finite, for every $x \in X$ and $k \in \mathbb{N}.$
 
 - 0-finite spaces are the finite discrete spaces, up to homotopy equivalence.
 - 1-finite spaces are unions of classifying spaces $\mathbb{B}G_{i}$, where each $G_i$ is a finite group.
 
+
 **Definition**: An **n-commutative monoid** is a (Segal) space $X$ such that: 
 - For every $n$-finite space $\mathcal{A}$, the left Kan extension $\int_{\mathcal{A}}: X^\mathcal{A} \to X$ exists
 - There is homotopy-coherent associativity and a homotopy-coherent unit
 - Analogous to taking the orbits of the induced representation, we have a commuting diagram 
-<div className="imgbox" style={{height:"30vh"}}><img src={images.kanInvariants} alt="Diagram of Kan extension and invariants functor giving a categorical 'induced representation'." /></div>
+
+<div className="imgbox"><img src={images.kanInvariants} alt="Diagram of Kan extension and invariants functor giving a categorical 'induced representation'." /></div>
+
 
 <u>Example</u>: If $X = \mathbb{Q}$ (more generally, any divisible commutative monoid) and we have a constant map $BG \xrightarrow{f} \mathbb{Q}$, the left Kan extension is $\int_{BG}f = \frac{1}{|G|}f(x)$. So we see that the extension is providing a generalisation of 'averaging over $G$'.
 
@@ -142,7 +158,11 @@ via the canonical morphism $X_{1} \cup \dots \cup X_{n} \to X_{1} \times \dots \
 $$
 \varinjlim_{A} \ X \cong \varprojlim_{A} \ X.
 $$
-If $X, Y \in \mathscr{C}$ are $0$-semiadditive, $f, \, g : X \to Y$ we can construct the diagram <div className="imgbox" style={{scale:"90%", height:"25vh"}}><img src={images.additivity}alt="Homotopy-coherent addition" /></div> recovering and generalising addition to the homotopy-coherent setting\! 
+If $X, Y \in \mathscr{C}$ are $0$-semiadditive, $f, \, g : X \to Y$ we can construct the diagram 
+
+<div className="imgbox" style={{scale:"90%"}}><img src={images.additivity}alt="Homotopy-coherent addition" /></div> 
+
+recovering and generalising addition to the homotopy-coherent setting! 
 
 **Theorem**: If $\mathscr{C}$ is $n$-semiadditive for all $X, Y \in \mathscr{C}$, $\text{Map}_{\mathscr{C}}(X,Y)$ has a canonical $n$-commutative monoid structure. 
 
@@ -153,7 +173,7 @@ If $X, Y \in \mathscr{C}$ are $0$-semiadditive, $f, \, g : X \to Y$ we can const
 
 **Theorem**(Y.): The categories $\mathsf{Sp}_{T(n)}$ for $n < \infty $ are also $\infty$-semiadditive. 
 
-- If $R$ is a $K(n)$-(or $T(n)$-)local commutative ring spectrum, all maps $R^{B\Sigma_{n}} \to R$ are of the form $x\mapsto \int_{B\Sigma_{n}}ax^n$, for $a \in R^{B\Sigma_{n}}$.
+If $R$ is a $K(n)$-(or $T(n)$-)local commutative ring spectrum, all maps $R^{B\Sigma_{n}} \to R$ are of the form $x\mapsto \int_{B\Sigma_{n}}ax^n$, for $a \in R^{B\Sigma_{n}}$.
 
 <u>Example</u>: In height $0$ and over $\mathbb{Q}$, all possible power operations are given by 
 $$

@@ -13,7 +13,7 @@ const TextWindow = ({ buttonText, children }) => {
         setBody(flag===true?`${Styles.active}`:"")
     }}>{buttonText}
     </button>
-    <p className={`${Styles.content} ${display}`}>{children}</p>
+    <div className={`${Styles.content} ${display}`}>{children}</div>
     </>
     )
 }

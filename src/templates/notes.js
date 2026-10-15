@@ -7,8 +7,8 @@ const Note = ({ location, pageContext, children}) => {
 
     return (
         <Layout location={location} pageTitle={pageContext.title}>
-            <article class="note">
-                <main class="math-text">{children}</main>
+            <article className="note">
+                <main className="math-text">{children}</main>
             </article>
             <Link to='../' style={{color: "var(--color-links-internal)"}}>Back</Link>
         </Layout>

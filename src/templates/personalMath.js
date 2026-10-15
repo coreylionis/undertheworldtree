@@ -10,7 +10,7 @@ const PersonalMathPage = ({ location, pageContext, children }) => {
         <Layout location={location} pageTitle={pageContext.title}>
             <article>
                 <p>Latest update was: {pageContext.dateModified}</p>
-                <main class="math-text">{children}</main>
+                <main className="math-text">{children}</main>
                 <footer><Bio /></footer>
             </article>
             <Link to='../' style={{color: "var(--color-links-internal)"}}>Back</Link>
@@ -18,6 +18,6 @@ const PersonalMathPage = ({ location, pageContext, children }) => {
     )
 }
 
-export const Head = ({data: {pageContext}}) => <Seo title={pageContext.title} />
+export const Head = ({ pageContext }) => <Seo title={pageContext.title} />
 
 export default PersonalMathPage

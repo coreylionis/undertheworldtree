@@ -16,8 +16,3 @@ const AboutPage = ({location}) => {
 export const Head = () => <><Seo title="About Me" /></>
 
 export default AboutPage
-
-// export const aboutMeQuery = useStaticQuery(graphql`
-//     allMarkdownRemark(){
-//     }
-//     `)

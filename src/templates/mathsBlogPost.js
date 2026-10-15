@@ -11,9 +11,9 @@ const MathsBlogPost = ({ location, pageContext, children}) => {
 
     return (
         <Layout location={location} pageTitle={pageContext.title}>
-            <article class="blogpostmath">
+            <article className="blogpostmath">
                 <p>Posted: {pageContext.dateCreated} | Updated: {pageContext.dateModified}</p>
-                <main class="math-text">{children}</main>
+                <main className="math-text">{children}</main>
                 <footer><Bio /></footer>
             </article>
             <Navlinks previous={ previous } next={ next } />
