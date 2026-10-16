@@ -8,13 +8,13 @@ const NavLinks = ({ previous, next }) => {
     return (
     <nav>
       <ul className={Styles.blogPostNav}>
-        <li>{previous && (<Link to={'../'+ previous.slug} rel="prev"> ← {previous.alttitle}</Link>)}</li>
+        <li>{previous && (<Link to={'../'+ previous.slug} rel="prev" className="internal-link"> ← {previous.alttitle}</Link>)}</li>
             |
         <li>
-            <Link to={'../'}>Back</Link>
+            <Link to={'../'} className="internal-link">Back</Link>
         </li>
             |
-        <li>{next && (<Link to={'../' + next.slug} rel="next">{next.alttitle} →</Link>)}</li>
+        <li>{next && (<Link to={'../' + next.slug} rel="next" className="internal-link">{next.alttitle} →</Link>)}</li>
       </ul>
     </nav> 
     )         

@@ -38,12 +38,12 @@
   font-size: clamp(0.8*var(--base-font-size), 1.5vw, 1.05*var(--base-font-size));
 }
 
-.nav-link-item:hover {
+/*.nav-link-item:hover {
     background-color: rgb(113, 172, 108);
-}
+}*/
 
 .nav-link-item.active {
-    background-color: rgb(113, 172, 108);
+    background-color: rgb(78, 118, 74);
 }
 
 .nav-link-text {

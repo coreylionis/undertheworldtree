@@ -11,7 +11,7 @@ const MathsTalkNote = ({ location, pageContext, children}) => {
     return (
         <Layout location={location} pageTitle={pageContext.title}>
             <article className="note">
-                <h2>Speaker: {pageContext.speaker}</h2>
+                <h3>Speaker: {pageContext.speaker}</h3>
                 <main className="math-text">{children} </main>
             </article>
             <Navlinks previous={ previous } next={ next } />

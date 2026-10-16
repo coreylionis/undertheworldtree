@@ -14,10 +14,10 @@ const SiteNav = ({location, title }) => {
         <nav>
             <ul className={Styles.navLinks}>
               <li className={`${Styles.navLinkItem} ${location.pathname === "/about/" ? Styles.active : ""}`}>
-                <Link className={Styles.navLinkText} to="/about">About</Link>
+                <Link className={`${Styles.navLinkText} internal-link`} to="/about">About</Link>
               </li>
-              <li className={`${Styles.navLinkItem} ${location.pathname === "/maths/" ? Styles.active : ""}`}>
-                <Link className={Styles.navLinkText} to="/maths">Maths</Link>
+              <li className={`${Styles.navLinkItem} ${location.pathname.includes("/maths/") ? Styles.active : ""}`}>
+                <Link className={`${Styles.navLinkText} internal-link`} to="/maths">Maths</Link>
               </li>
             </ul>
           </nav>
