@@ -141,7 +141,52 @@ This module is no longer irreducible, but the quotient $L(w)' = L(w)/ \text{Span
 $$
 \text{ch}[L(w)'] = \sum_{y \in P^+} \eta_{w, y} P_{w, y}(1) \text{ch}[L(w)],
 $$
-where $P_{w, y}$ is the Kazhdan-Lusztig polynomial with parameters $w, y$ and $\eta_{w,y} \in \{\pm 1\}$....  
+where $P_{w, y}$ is the Kazhdan-Lusztig polynomial with parameters $w, y$ and $\eta_{w,y} \in \{\pm 1\}$.
+
+### Geometric representations
+
+The positive part $\cal{U}_q(\frr{g})^+$ of the quantum eveloping algebra $\cal{U}_q(\frr{g})$ can be thought of as a subalgebra of a Ringel-Hall algebra. This Lusztig-Ringel-Hall [Lusztig](https://doi.org/10.2307/1990961) [Ringel](https://doi.org/10.1007/BF01231516) construction specifies the *canonical basis* of $\cal{U}_q(\frr{g})$, and connects the representation theory of the algebra with the Dynkin quiver of $\frr{g}$. 
+
+For $\frr{g} = \frr{sl}_n$ we have the Dynkin quiver
+<div className="imgbox">
+<img src={images.anQuiver} alt={"A colored illustration of the directed A_n quiver."} />
+</div>
+of type $A_n$ with orientation $\Omega$ (shown here through directed edges). Representations of this quiver are $n$-tuples $(V_1, \dots, V_n)$ of vector spaces $V_i$ with dimensions $d_i$ and homomorphisms $\eta_{ij} \in \text{Hom}(V_i, V_j)$ for each oriented edge $i \to j$. The representation is finite-dimensional if $\bigoplus_i V_i$ is.   
+
+Fixing the vectors spaces $V_i$ and setting $V = \bigoplus_i V_i$, the moduli space of representations with orientation $\Omega$ is the set 
+
+$$
+\mathsf{E}_{V, \Omega} = \text{Rep}(Q, V) = \bigoplus_{i \to j} \text{Hom}(V_i, V_j).
+$$
+
+There is a natural action of $GL_{(d_1, \dots, d_n)} = \prod_i \text{Aut}(V_i)$ given by conjugation on each hom-set. The (stacky) quotient $\mathsf{E}_{V, \Omega}/GL_{(d_1, \dots, d_n)}$ forgets the choice of bases for the $V_i$, so that it parametrises isomorphism classes of representations with vector space dimensions $(d_1, \dots, d_n)$. Letting the dimensions vary gives us the moduli space of finite-dimensional quiver representations, 
+
+$$
+\frr{M}(Q_n) = \coprod_{(d_1, \dots, d_n) \in \bb{N}^n} \mathsf{E}_{V, \Omega}/GL_{(d_1, \dots, d_n)}.
+$$
+
+<u>**Theorem:**</u> There is an isomorphism 
+
+$$
+\cal{U}_q^+(\frr{g}) \xrightarrow{\sim} \bigoplus_{(d_1, \dots, d_n)} K^0(\text{Perv}_{GL_{(d_1, \dots, d_n)}}(E_{V, \Omega}))
+$$
+
+of algebras, where the right-hand side is the $0$th $K$-group of the category of $GL_{(d_1, \dots, d_n)}$-equivariant perverse sheaves on $E_{V, \Omega}$, $V = \bigoplus_{d_i} V_i$.The algebra structure on the right-hand side is given by the convolution product 
+
+$$
+\cal{F}_1 * \cal{F}_2 = q_{{}_!} p^*(\cal{F}_1 \boxtimes \cal{F}_2)
+$$
+
+resulting from the diagram 
+
+<div className="imgbox textimg">
+<div className="imgbox" style={{scale:"100%", flex:2}}><img src={images.extGroupConv} alt="Convolution diagram, demonstrating that perverse sheaf convolution from representations V, W involves pullback along projection from Ext(W,V) and lower shriek (compactly supported image) along the map from Ext to its exact-sequence middle term." /></div>
+<span style={{flex:1, fontSize:"1.5rem"}}>.</span>
+</div> 
+
+The map $p$ is induced by projecting to the kernel and cokernel of the extension, and the map $q$ is induced by projecting to the middle term.
+
+There is a similar geometric quantum algebra story attached to the affine Lie algebra $\hat{\frr{g}}$, and an affinization procedure $\frr{g} \rightsquigarrow \hat{\frr{g}}$. The role of the Hall algebra is replaced by a cohomological Hall algebra (COHA). More recently, other quantum groups including quantum toroidal algebras and truncated Yangians have been studied as part of understanding the relation between Higgs and Coulomb branches of $3d \ N=4$ quiver gauge theories.  
 
 
 #### Footnotes
